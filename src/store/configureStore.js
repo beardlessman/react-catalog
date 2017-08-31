@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers'
-import { epta } from './enhancers/epta'
+// import { epta } from './enhancers/epta'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
@@ -11,6 +11,7 @@ export default function configureStore(initialState) {
         rootReducer, 
         initialState,
         applyMiddleware(thunk, logger)
+        // applyMiddleware(thunk, epta, logger) // добавление своего миддлваре
     );
     
     if (module.hot) {

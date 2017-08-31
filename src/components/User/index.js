@@ -4,7 +4,7 @@ import './style.css'
 export default class User extends Component {
   buttonHandler(e) {
     e.preventDefault();
-    this.props.changeHello('Привет')
+    this.props.resetHello('Привет')
   }
   render() {
     const user = this.props.data
@@ -16,7 +16,7 @@ export default class User extends Component {
           :
           user.error ? <p className="error">Ошибка загрузки</p> : <p>{user.hello}, {user.name}!</p>
         }
-        <button onClick={this.buttonHandler.bind(this)}>Дефолт приветствие</button>
+        <button onClick={this.buttonHandler.bind(this)}>reset</button>
       </div>
     )
   }

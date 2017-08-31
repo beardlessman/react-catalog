@@ -1,0 +1,10 @@
+.content {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1232px;
+    min-width: 320px;
+    padding: 16px;
+    margin: 0 auto;
+    min-height: calc(100vh - 168px);
+}

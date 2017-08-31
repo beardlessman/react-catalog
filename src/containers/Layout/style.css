@@ -1,0 +1,18 @@
+.layout {
+    position: relative;
+    display: block;
+    background-color: #f3f3f3;
+}
+.layout__content {
+    display: block;
+    position: relative;
+}
+.layout__header {
+    display: block;
+    position: relative;
+}
+.layout__footer {
+    display: block;
+    position: relative;
+    background: #eee url(/static/img/layout-footer-bg.png) 50% 100%;
+}

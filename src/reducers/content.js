@@ -1,21 +1,18 @@
 import { 
-    RESET_HELLO,
     CHANGE_HELLO_REQUEST, 
     CHANGE_HELLO_SUCCESS,
     CHANGE_HELLO_ERROR  
-} from '../constants/User'
+} from '../constants/Content'
 
-export const initialState = {
-    hello: 'Привет',
-    name: 'Юзернейм',
-    fetching: false,
-    error: false
+const initialState = {
+    // hello: 'Привет',
+    // name: 'Юзернейм',
+    // fetching: false,
+    // error: false
 };
   
-export default function user(state = initialState, action) {
+export default function content(state = initialState, action) {
     switch (action.type) {
-        case RESET_HELLO:
-            return {...state, hello: action.payload}
         case CHANGE_HELLO_REQUEST:
             return {...state, hello: action.payload, fetching: true}
         case CHANGE_HELLO_SUCCESS:

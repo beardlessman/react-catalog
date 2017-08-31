@@ -9,10 +9,8 @@ import configureStore from './store/configureStore'
 const STORE = configureStore();
 
 render(
-    <div>
-        <Provider store={STORE}>
-            <App />
-        </Provider>
-    </div>,
+    <Provider store={STORE}>
+        <App />
+    </Provider>,
   document.getElementById('root')
 )
