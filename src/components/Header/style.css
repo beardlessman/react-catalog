@@ -1,11 +1,16 @@
 .header {
-    background: #b80f29;
     position: relative;
     display: block;
     width: 100%;
     max-width: 1232px;
     min-width: 320px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.header__inner {
+    background: #b80f29;
+    position: relative;
+    display: block;
     padding: 16px;
     color: #fff;
-    margin: 0 auto;
 }

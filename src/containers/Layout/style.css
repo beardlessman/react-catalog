@@ -15,4 +15,5 @@
     display: block;
     position: relative;
     background: #eee url(/static/img/layout-footer-bg.png) 50% 100%;
+    border-top: 1px solid #e0e0e0;
 }

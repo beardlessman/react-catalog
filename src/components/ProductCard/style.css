@@ -1,0 +1,23 @@
+.product-card {
+    position: relative;
+    display: block;
+    max-height: 400px;
+    height: 400px;
+    margin-bottom: 16px;
+    width: 25%;
+    min-height: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: inline-block;
+}
+.product-card__inner {
+    position: relative;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+.product-card__inner:hover {
+    box-shadow: 0 1px 6px 0 rgba(0,0,0,.3);
+}
