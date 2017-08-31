@@ -4,13 +4,16 @@ import { connect } from 'react-redux'
 import ProductCard from '../../components/ProductCard'
 import * as productListActions from '../../actions/ProductListActions'
 import './style.css'
+import './img/loader.gif'
 
 class ProductList extends Component {
     componentWillMount() {
         this.props.productListActions.loadProducts();
     }
     render() {
-        const data = this.props.list.data;
+        const data = this.props.list.data
+        const fetching = this.props.list.fetching
+        const error = this.props.list.error
         const products = data.map((item, id) => {
             return (
                 <ProductCard key={id} data={item}/>
@@ -18,10 +21,15 @@ class ProductList extends Component {
         });
         const productListActions = this.props.productListActions
         return (
-          <div className="product-list">
-              {products}
-          </div>
-        )
+            <div>
+                {
+                    fetching ?
+                    <p><img className="product-list__loader" src="/static/img/loader.gif" /></p>
+                    :
+                    error ? <p className="error">Нихуя не загрузилось!</p> : <div className="product-list">{products}</div>
+                }
+            </div>
+        ) 
     }
 }
 

@@ -8,10 +8,9 @@ export default class Content extends Component {
   render() {
     const { user, simple } = this.props.data
     const actions = this.props.actions
-    const productlist = [1,2,3,4,5,6,7];
     return (
       <div className="content">
-        <ProductList data={productlist}/>
+        <ProductList/>
         {/* <UserWrap />
         <Simple data={simple} changeHello={actions.changeHello} /> */}
       </div>

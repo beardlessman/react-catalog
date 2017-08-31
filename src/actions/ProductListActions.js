@@ -23,11 +23,11 @@ export function loadProducts (hello) {
                     })
                 }, 400)
             })
-            .catch(function(request) {
+            .catch(function() {
                 setTimeout(() => {
                     dispatch({
                         type: LOAD_PRODUCTS_ERROR,
-                        payload: []
+                        payload: [1]
                     })
                 }, 400)
             })
