@@ -7,14 +7,26 @@ import './style.css'
 import './img/loader.gif'
 
 class ProductList extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.productListActions.loadProducts();
     }
     render() {
         const data = this.props.list.data
         const fetching = this.props.list.fetching
         const error = this.props.list.error
-        const products = data.map((item, id) => {
+
+        const filterText = this.props.filter.filterText
+
+        let filteredData = []
+
+        data.forEach((product) => {
+            if (product.title.indexOf(filterText) === -1) {
+              return;
+            }
+            filteredData.push(product);
+        });
+
+        const products = filteredData.map((item, id) => {
             return (
                 <ProductCard key={id} data={item}/>
             )
@@ -35,7 +47,8 @@ class ProductList extends Component {
 
 function mapStateToProps (state) {
   return {
-    list: state.productList
+    list: state.productList,
+    filter: state.filter
   }
 }
 function mapDispatchToProps(dispatch) {

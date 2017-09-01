@@ -1,6 +1,7 @@
 *, :after, :before {
     box-sizing: border-box;
 }
+a, abbr, acronym, address, applet, b, big, blockquote, body, button, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var
 body {
     padding: 0;
     margin: 0;
@@ -9,4 +10,15 @@ body {
 }
 .error {
     color: #b80f29;
+}
+.title {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    line-break: auto;
+    display: block;
+    font-weight: 700;
+    color: #292929;
+    font-size: 22px;
+    line-height: 24px;
 }
