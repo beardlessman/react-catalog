@@ -4,11 +4,13 @@ import user from './user'
 import header from './header'
 import productList from './productList'
 import filter from './filter'
+import sort from './sort'
 
 export default combineReducers({
   simple,
   user,
   header,
   productList,
-  filter
+  filter,
+  sort
 })

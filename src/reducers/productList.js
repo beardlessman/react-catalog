@@ -6,7 +6,7 @@ import {
 
 export const initialState = {
     data: [],
-    fetching: false,
+    fetching: true,
     error: false
 };
   

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Filter from '../../containers/Filter'
+import Sort from '../../containers/Sort'
 import './style.css'
 
 export default class Toolbar extends Component {
@@ -8,10 +8,7 @@ export default class Toolbar extends Component {
     return (
       <div className="toolbar">
           <h1 className="title">Заголовок</h1>
-          <Filter />
-          <div>
-              <button>sort</button>
-          </div>
+          <Sort />
       </div>
     )
   }

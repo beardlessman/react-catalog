@@ -6,7 +6,7 @@ export const initialState = {
     filterText: ''
 };
 
-export default function user(state = initialState, action) {
+export default function filter(state = initialState, action) {
     switch (action.type) {
         case INPUT_FILTER_TEXT:
             return {...state, filterText: action.payload}

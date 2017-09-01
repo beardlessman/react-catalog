@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Filter from '../../containers/Filter'
 import './style.css'
 
 export default class Header extends Component {
@@ -6,7 +7,7 @@ export default class Header extends Component {
     return (
       <header className="header">
         <div className="header__inner">
-          {this.props.data.text}
+          <Filter />
         </div>
       </header>
     )

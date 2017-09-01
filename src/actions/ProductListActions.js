@@ -14,7 +14,8 @@ export function loadProducts (hello) {
         })
 
         axios
-            .get('https://jsonplaceholder.typicode.com/albums')
+            .get('https://jsonplaceholder.typicode.com/posts')
+            // .get('http://rtivital.github.io/react-challenge-sort-and-search/data.json')
             .then(function(request) {
                 setTimeout(() => {
                     dispatch({

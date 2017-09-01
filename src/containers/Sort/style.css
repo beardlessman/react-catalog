@@ -1,0 +1,17 @@
+.sort-btn.active {
+    color: green;
+    border-color: green;
+}
+
+.dir-btn:before {
+    content: '';
+    font-size: 16px;
+    display: inline-block;
+    color: #000;
+}
+.dir-btn.up:before {
+    content: 'по возрастанию';
+}
+.dir-btn.down:before {
+    content: 'по убыванию';
+}
