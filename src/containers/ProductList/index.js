@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import ProductCard from '../../components/ProductCard'
+import ProductCard from '../ProductCard'
 import * as productListActions from '../../actions/ProductListActions'
 import './style.css'
 import './img/loader.gif'
@@ -31,13 +31,12 @@ class ProductList extends Component {
             sorted.sort(compareId)
         }
         if (abc) {
+            console.log('sorting by abc')
             sorted.sort(compareABC)
         }
         if (price) {
             sorted.sort(comparePrice)
         }
-
-        return sorted
 
         function compareId(a, b) {
             if (a.id > b.id) return direction;
@@ -51,6 +50,8 @@ class ProductList extends Component {
             if (a.userId > b.userId) return direction;
             if (a.userId < b.userId) return -direction;
         }
+
+        return sorted
     }
 
     render() {
@@ -75,8 +76,10 @@ class ProductList extends Component {
             const filterText = this.props.filter.filterText
             const sortSettings = this.props.sort.settings 
             
-            const filteredData = this.filterData(data, filterText) // избавиться от фильтрации, если фильтр пуст
-            const sortedData = this.sortingData(filteredData, sortSettings) // избавиться от сортировки, если сортировка дефолтная
+            const filteredData = this.filterData(data, filterText)
+            const sortedData = this.sortingData(filteredData, sortSettings)
+
+            console.log(sortedData)
     
             products = sortedData.map((item, id) => {
                 return (

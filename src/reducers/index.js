@@ -5,6 +5,8 @@ import header from './header'
 import productList from './productList'
 import filter from './filter'
 import sort from './sort'
+import cart from './cart'
+// import productCard from './productCard'
 
 export default combineReducers({
   simple,
@@ -12,5 +14,6 @@ export default combineReducers({
   header,
   productList,
   filter,
-  sort
+  sort,
+  cart
 })
