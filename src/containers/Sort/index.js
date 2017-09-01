@@ -12,6 +12,11 @@ class Sort extends Component {
         let direction = settings.direction
 
         const typeSet = settings[type] ? false : true
+
+        if (typeSet == false) {
+          return false
+        }
+
         const newSettings = Object.assign({}, settings);
 
         for (var key in newSettings) {
@@ -20,7 +25,6 @@ class Sort extends Component {
         newSettings.direction = direction
         newSettings[type] = typeSet
 
-        console.log(newSettings)
         actions.changeSorting(newSettings)
     }
 
@@ -33,7 +37,6 @@ class Sort extends Component {
 
       newSettings.direction = direction
 
-      console.log(newSettings)
       actions.changeSorting(newSettings)
     }
 
