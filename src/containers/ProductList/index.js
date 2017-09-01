@@ -78,8 +78,6 @@ class ProductList extends Component {
             
             const filteredData = this.filterData(data, filterText)
             const sortedData = this.sortingData(filteredData, sortSettings)
-
-            console.log(sortedData)
     
             products = sortedData.map((item, id) => {
                 return (
