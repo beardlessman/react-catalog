@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as sortActions from '../../actions/SortActions'
+import * as productListActions from '../../actions/ProductListActions'
 import './style.css'
 
 class Sort extends Component {
     
     changeSorting(type) {
-        const actions = this.props.sortActions
-        const settings = this.props.sort.settings
+        const actions = this.props.actions
+        const settings = this.props.settings
         let direction = settings.direction
 
         const typeSet = settings[type] ? false : true
@@ -25,12 +25,13 @@ class Sort extends Component {
         newSettings.direction = direction
         newSettings[type] = typeSet
 
+        console.log(newSettings)
+
         actions.changeSorting(newSettings)
     }
-
     changeDirection() {
-      const actions = this.props.sortActions
-      const settings = this.props.sort.settings
+      const actions = this.props.actions
+      const settings = this.props.settings
       let direction = -settings.direction
 
       const newSettings = Object.assign({}, settings);
@@ -41,7 +42,7 @@ class Sort extends Component {
     }
 
     render() {
-        const sort = this.props.sort.settings
+        const sort = this.props.settings
         return (
             <div className="sort">
                 <button onClick={() => this.changeSorting('id')} className={sort.id ? 'sort-btn active' : 'sort-btn'}>Default</button>
@@ -56,12 +57,12 @@ class Sort extends Component {
 
 function mapStateToProps (state) {
   return {
-    sort: state.sort
+    settings: state.productList.sortSettings
   }
 }
 function mapDispatchToProps(dispatch) {
   return {
-    sortActions: bindActionCreators(sortActions, dispatch)
+    actions: bindActionCreators(productListActions, dispatch)
   }
 }
 

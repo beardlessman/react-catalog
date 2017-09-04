@@ -1,7 +1,8 @@
 import { 
     LOAD_PRODUCTS_REQUEST, 
     LOAD_PRODUCTS_SUCCESS,
-    LOAD_PRODUCTS_ERROR
+    LOAD_PRODUCTS_ERROR,
+    CHANGE_SORTING
 } from '../constants/ProductList'
 import axios from 'axios' // ajax library
 
@@ -32,5 +33,13 @@ export function loadProducts (hello) {
                     })
                 }, 400)
             })
+    }
+}
+export function changeSorting (settings) {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_SORTING,
+            payload: settings
+        })
     }
 }

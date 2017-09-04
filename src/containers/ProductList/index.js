@@ -30,11 +30,10 @@ class ProductList extends Component {
         if (id) {
             sorted.sort(compareId)
         }
-        if (abc) {
-            console.log('sorting by abc')
+        else if (abc) {
             sorted.sort(compareABC)
         }
-        if (price) {
+        else if (price) {
             sorted.sort(comparePrice)
         }
 
@@ -74,7 +73,7 @@ class ProductList extends Component {
         } else {
             const data = this.props.list.data
             const filterText = this.props.filter.filterText
-            const sortSettings = this.props.sort.settings 
+            const sortSettings = this.props.sort 
             
             const filteredData = this.filterData(data, filterText)
             const sortedData = this.sortingData(filteredData, sortSettings)
@@ -98,7 +97,7 @@ function mapStateToProps (state) {
   return {
     list: state.productList,
     filter: state.filter,
-    sort: state.sort
+    sort: state.productList.sortSettings
   }
 }
 function mapDispatchToProps(dispatch) {

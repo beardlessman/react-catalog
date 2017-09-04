@@ -22,7 +22,6 @@ class ProductCard extends Component {
     cart.push(data)
     return cart
   }
-
   remove() {
     const data = this.props.data
     let cart = this.props.cart.items.slice()
@@ -40,7 +39,6 @@ class ProductCard extends Component {
     cart.splice(itemPosition, 1)
     return cart
   }
-  
   changeToNewQuantity(newQuantity) {
     const data = this.props.data
     const cartData = this.props.cart
@@ -81,7 +79,7 @@ class ProductCard extends Component {
   addToCart() {
     this.changeCartItems(this.add());
   }
-  removeFromCart() {
+  removeFromCart = () => {
     this.changeCartItems(this.remove());
   }
   changeQuantity(e) {
@@ -104,7 +102,7 @@ class ProductCard extends Component {
             {
               (quantity > 0) ?
               <p>
-                <button onClick={this.removeFromCart.bind(this)}>-</button>
+                <button onClick={this.removeFromCart}>-</button>
                 <input type="number" value={quantity} onChange={this.changeQuantity.bind(this)}/>
                 <button onClick={this.addToCart.bind(this)}>+</button>
               </p>
@@ -116,6 +114,7 @@ class ProductCard extends Component {
     )
   }
 }
+
 function mapStateToProps (state) {
   return {
     cart: state.cart
@@ -126,5 +125,4 @@ function mapDispatchToProps(dispatch) {
     cartActions: bindActionCreators(cartActions, dispatch)
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(ProductCard)
