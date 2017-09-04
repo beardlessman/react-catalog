@@ -8,41 +8,47 @@ class Sort extends Component {
     
     changeSorting(type) {
         const actions = this.props.actions
-        const settings = this.props.settings
-        let direction = settings.direction
+        const sortSettings = this.props.settings.sort
+        let direction = sortSettings.direction
 
-        const typeSet = settings[type] ? false : true
+        const typeSet = sortSettings[type] ? false : true
 
         if (typeSet == false) {
           return false
         }
 
-        const newSettings = Object.assign({}, settings);
-
-        for (var key in newSettings) {
-            newSettings[key] = false
+        let newSettings = {}
+        for (var key in this.props.settings) {
+          newSettings[key] = this.props.settings[key];
         }
-        newSettings.direction = direction
-        newSettings[type] = typeSet
 
-        console.log(newSettings)
+        for (var key in newSettings.sort) {
+            newSettings.sort[key] = false
+        }
+        newSettings.sort.direction = direction
+        newSettings.sort[type] = typeSet
 
-        actions.changeSorting(newSettings)
+        actions.changeSettings(newSettings)
+        actions.loadProducts(newSettings)
     }
     changeDirection() {
       const actions = this.props.actions
-      const settings = this.props.settings
+      const settings = this.props.settings.sort
       let direction = -settings.direction
 
-      const newSettings = Object.assign({}, settings);
+      let newSettings = {}
+      for (var key in this.props.settings) {
+        newSettings[key] = this.props.settings[key];
+      }
 
-      newSettings.direction = direction
+      newSettings.sort.direction = direction
 
-      actions.changeSorting(newSettings)
+      actions.changeSettings(newSettings)
+      actions.loadProducts(newSettings)
     }
 
     render() {
-        const sort = this.props.settings
+        const sort = this.props.settings.sort
         return (
             <div className="sort">
                 <button onClick={() => this.changeSorting('id')} className={sort.id ? 'sort-btn active' : 'sort-btn'}>Default</button>
@@ -57,7 +63,7 @@ class Sort extends Component {
 
 function mapStateToProps (state) {
   return {
-    settings: state.productList.sortSettings
+    settings: state.productList.settings
   }
 }
 function mapDispatchToProps(dispatch) {

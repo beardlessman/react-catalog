@@ -2,7 +2,8 @@ import {
     LOAD_PRODUCTS_REQUEST, 
     LOAD_PRODUCTS_SUCCESS,
     LOAD_PRODUCTS_ERROR,
-    CHANGE_SORTING
+    CHANGE_SORTING,
+    CHANGE_SETTINGS
 } from '../constants/ProductList'
 import axios from 'axios' // ajax library
 
@@ -14,6 +15,8 @@ export function loadProducts (settings) {
             payload: []
         })
 
+        console.log(settings)
+
         axios
             .get('https://jsonplaceholder.typicode.com/posts')
             // .get('http://rtivital.github.io/react-challenge-sort-and-search/data.json')
@@ -23,7 +26,7 @@ export function loadProducts (settings) {
                         type: LOAD_PRODUCTS_SUCCESS,
                         payload: request.data
                     })
-                }, 400)
+                }, 100)
             })
             .catch(function() {
                 setTimeout(() => {
@@ -31,7 +34,7 @@ export function loadProducts (settings) {
                         type: LOAD_PRODUCTS_ERROR,
                         payload: []
                     })
-                }, 400)
+                }, 100)
             })
     }
 }
@@ -39,6 +42,14 @@ export function changeSorting (settings) {
     return (dispatch) => {
         dispatch({
             type: CHANGE_SORTING,
+            payload: settings
+        })
+    }
+}
+export function changeSettings (settings) {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_SETTINGS,
             payload: settings
         })
     }

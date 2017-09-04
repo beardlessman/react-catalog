@@ -13,7 +13,15 @@ class Filter extends Component {
         const listActions = this.props.productListAction
         const filterText = document.getElementById("filterText").value
 
-        listActions.loadProducts()
+        let newSettings = {}
+        for (var key in this.props.settings) {
+          newSettings[key] = this.props.settings[key];
+        }
+
+        newSettings.filter.text = filterText
+
+        listActions.changeSettings(newSettings)
+        listActions.loadProducts(newSettings)
         actions.inputFilterText(filterText)
     }
 
@@ -24,11 +32,17 @@ class Filter extends Component {
 
     render() {
         const filter = this.props.filter
+        const settings = this.props.settings
         return (
             <div className="filter">
                 <form onSubmit={this.inputFilterText}>
                     <input id="filterText" type="text" placeholder="Search..." value={filter.inputText} onChange={this.inputHandler}/>
-                    <button type="submit">ПОШЕЛ</button> 
+                    {
+                      (settings.filter.text.length > 0) ?
+                      <button type="submit">{settings.filter.text}</button> 
+                      :
+                      <button type="submit">GO</button> 
+                    }
                 </form>
             </div>
     )
@@ -37,7 +51,8 @@ class Filter extends Component {
 
 function mapStateToProps (state) {
   return {
-    filter: state.filter
+    filter: state.filter,
+    settings: state.productList.settings
   }
 }
 function mapDispatchToProps(dispatch) {

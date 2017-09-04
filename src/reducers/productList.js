@@ -2,7 +2,8 @@ import {
     LOAD_PRODUCTS_REQUEST, 
     LOAD_PRODUCTS_SUCCESS,
     LOAD_PRODUCTS_ERROR,
-    CHANGE_SORTING
+    CHANGE_SORTING,
+    CHANGE_SETTINGS
 } from '../constants/ProductList'
 
 export const initialState = {
@@ -38,6 +39,8 @@ export default function user(state = initialState, action) {
             return {...state, data: action.payload, error: true, fetching: false}
         case CHANGE_SORTING:
             return {...state, sortSettings: action.payload}
+        case CHANGE_SETTINGS:
+            return {...state, settings: action.payload}
         default:
             return state;
     }
