@@ -7,7 +7,7 @@ import {
 import axios from 'axios' // ajax library
 
 
-export function loadProducts (hello) {
+export function loadProducts (settings) {
     return (dispatch) => {
         dispatch({
             type: LOAD_PRODUCTS_REQUEST,

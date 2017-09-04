@@ -14,6 +14,17 @@ export const initialState = {
         abc: false,
         price: false,
         direction: 1
+    },
+    settings: {
+        sort: {
+            id: true,
+            abc: false,
+            price: false,
+            direction: 1
+        },
+        filter: {
+            text: ''
+        }
     }
 };
   
