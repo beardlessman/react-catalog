@@ -25,6 +25,10 @@ export const initialState = {
         },
         filter: {
             text: ''
+        }, 
+        pagination: {
+            limit: 20,
+            offset: 0
         }
     }
 };

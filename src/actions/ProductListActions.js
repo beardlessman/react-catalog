@@ -15,12 +15,15 @@ export function loadProducts (settings) {
             payload: []
         })
 
-        console.log(settings)
+        var root = 'https://jsonplaceholder.typicode.com/posts';        
 
         axios
-            .get('https://jsonplaceholder.typicode.com/posts')
+            .get(root, {
+                params: settings
+              })
             // .get('http://rtivital.github.io/react-challenge-sort-and-search/data.json')
             .then(function(request) {
+                console.log(request)
                 setTimeout(() => {
                     dispatch({
                         type: LOAD_PRODUCTS_SUCCESS,
