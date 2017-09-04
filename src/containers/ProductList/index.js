@@ -76,19 +76,28 @@ class ProductList extends Component {
             const sortSettings = this.props.sort 
             
             const filteredData = this.filterData(data, filterText)
-            const sortedData = this.sortingData(filteredData, sortSettings)
-    
-            products = sortedData.map((item, id) => {
-                return (
-                    <ProductCard key={id} data={item}/>
-                )
-            });
 
-            return (
-                <div>
-                    <div className="product-list">{products}</div>
-                </div>
-            ) 
+            if (filteredData.length > 0) {
+                const sortedData = this.sortingData(filteredData, sortSettings)
+                
+                products = sortedData.map((item, id) => {
+                    return (
+                        <ProductCard key={id} data={item}/>
+                    )
+                });
+
+                return (
+                    <div>
+                        <div className="product-list">{products}</div>
+                    </div>
+                ) 
+            } else {
+                return (
+                    <div>
+                        <p className="error">Таких товаров не бывает :(</p>
+                    </div>
+                ) 
+            }
         }
     }
 }

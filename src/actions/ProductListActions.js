@@ -29,7 +29,7 @@ export function loadProducts (hello) {
                 setTimeout(() => {
                     dispatch({
                         type: LOAD_PRODUCTS_ERROR,
-                        payload: [1]
+                        payload: []
                     })
                 }, 400)
             })
