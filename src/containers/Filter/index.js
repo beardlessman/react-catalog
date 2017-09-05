@@ -36,12 +36,7 @@ class Filter extends Component {
             <div className="filter">
                 <form onSubmit={this.inputFilterText}>
                     <input id="filterText" type="text" placeholder="Search..." value={filter.inputText} onChange={this.inputHandler}/>
-                    {
-                      (settings.filter.text.length > 0) ?
-                      <button type="submit">{settings.filter.text}</button> 
-                      :
-                      <button type="submit">GO</button> 
-                    }
+                    <button type="submit">GO</button>
                 </form>
             </div>
     )

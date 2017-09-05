@@ -13,7 +13,7 @@ function load (dispatch, settings) {
         payload: []
     })
 
-    var root = 'https://jsonplaceholder.typicode.com/posts'
+    var root = 'https://jsonplaceholder.typicode.com/posts?userId=1'
     
     axios
         .get(root, {
@@ -36,16 +36,16 @@ function load (dispatch, settings) {
             }, 50)
         })
 }
-function get_random_color() {
+function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
     for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.round(Math.random() * 15)];
+        color += letters[Math.round(Math.random() * letters.length)];
     }
     return color;
 }
 function someSideEffect() {
-    $('.header__inner').css({background: get_random_color()})
+    $('.header__inner').css({background: getRandomColor()})
 }
 
 export function loadProducts (settings) {
