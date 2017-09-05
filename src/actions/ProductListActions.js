@@ -5,6 +5,7 @@ import {
     CHANGE_SETTINGS
 } from '../constants/ProductList'
 import axios from 'axios' // ajax library
+import $ from 'jquery'
 
 function load (dispatch, settings) {
     dispatch({
@@ -24,7 +25,7 @@ function load (dispatch, settings) {
                     type: LOAD_PRODUCTS_SUCCESS,
                     payload: request.data
                 })
-            }, 100)
+            }, 50)
         })
         .catch(function() {
             setTimeout(() => {
@@ -32,8 +33,19 @@ function load (dispatch, settings) {
                     type: LOAD_PRODUCTS_ERROR,
                     payload: []
                 })
-            }, 100)
+            }, 50)
         })
+}
+function get_random_color() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+}
+function someSideEffect() {
+    $('.header__inner').css({background: get_random_color()})
 }
 
 export function loadProducts (settings) {
@@ -43,6 +55,8 @@ export function loadProducts (settings) {
 }
 export function changeSettings (settings) {
     return (dispatch) => {
+        someSideEffect()
+
         dispatch({
             type: CHANGE_SETTINGS,
             payload: settings
