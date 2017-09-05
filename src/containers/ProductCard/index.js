@@ -25,25 +25,14 @@ class ProductCard extends Component {
   remove() {
     const data = this.props.data
     let cart = this.props.cart.items.slice()
-    const id = data.id
-    function getItemPosition(cart) {
-      let num = 0;
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id == id) {
-          num = i
-        }
-      }
-      return num
-    }
-    const itemPosition = getItemPosition(cart)
+    const itemPosition = cart.indexOf(data)
     cart.splice(itemPosition, 1)
     return cart
   }
   changeToNewQuantity(newQuantity) {
     const data = this.props.data
     const cartData = this.props.cart
-    const id = data.id
-    const quantity = this.calcQuantity(this.props.cart.items, this.props.data.id)
+    const quantity = this.calcQuantity(cartData.items, data.id)
     
     let newCart = cartData.items.slice()
 
@@ -58,16 +47,7 @@ class ProductCard extends Component {
       let count = quantity - newQuantity
       
       while (count > 0) {
-        function getItemPosition(cart) {
-          let num = 0;
-          for (let i = 0; i < cart.length; i++) {
-            if (cart[i].id == id) {
-              num = i
-            }
-          }
-          return num
-        }
-        const itemPosition = getItemPosition(newCart)
+        const itemPosition = newCart.indexOf(data)
         newCart.splice(itemPosition, 1)
 
         count--
