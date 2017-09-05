@@ -9,20 +9,19 @@ class Filter extends Component {
     
     inputFilterText = (e) => {
       e.preventDefault()
-        const actions = this.props.filterActions
-        const listActions = this.props.productListAction
-        const filterText = document.getElementById("filterText").value
+      const actions = this.props.filterActions
+      const listActions = this.props.productListAction
+      const filterText = document.getElementById("filterText").value
 
-        let newSettings = {}
-        for (var key in this.props.settings) {
-          newSettings[key] = this.props.settings[key];
-        }
+      let newSettings = {}
+      for (var key in this.props.settings) {
+        newSettings[key] = this.props.settings[key];
+      }
 
-        newSettings.filter.text = filterText
+      newSettings.filter.text = filterText
 
-        listActions.changeSettings(newSettings)
-        listActions.loadProducts(newSettings)
-        actions.inputFilterText(filterText)
+      listActions.changeSettings(newSettings)
+      actions.inputFilterText(filterText)
     }
 
     inputHandler = (e) => {

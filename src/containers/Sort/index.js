@@ -7,29 +7,28 @@ import './style.css'
 class Sort extends Component {
     
     changeSorting(type) {
-        const actions = this.props.actions
-        const sortSettings = this.props.settings.sort
-        let direction = sortSettings.direction
+      const actions = this.props.actions
+      const sortSettings = this.props.settings.sort
+      let direction = sortSettings.direction
 
-        const typeSet = sortSettings[type] ? false : true
+      const typeSet = sortSettings[type] ? false : true
 
-        if (typeSet == false) {
-          return false
-        }
+      if (typeSet == false) {
+        return false
+      }
 
-        let newSettings = {}
-        for (var key in this.props.settings) {
-          newSettings[key] = this.props.settings[key];
-        }
+      let newSettings = {}
+      for (var key in this.props.settings) {
+        newSettings[key] = this.props.settings[key];
+      }
 
-        for (var key in newSettings.sort) {
-            newSettings.sort[key] = false
-        }
-        newSettings.sort.direction = direction
-        newSettings.sort[type] = typeSet
+      for (var key in newSettings.sort) {
+          newSettings.sort[key] = false
+      }
+      newSettings.sort.direction = direction
+      newSettings.sort[type] = typeSet
 
-        actions.changeSettings(newSettings)
-        actions.loadProducts(newSettings)
+      actions.changeSettings(newSettings)
     }
     changeDirection() {
       const actions = this.props.actions
@@ -44,7 +43,6 @@ class Sort extends Component {
       newSettings.sort.direction = direction
 
       actions.changeSettings(newSettings)
-      actions.loadProducts(newSettings)
     }
 
     render() {
