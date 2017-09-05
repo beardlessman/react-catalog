@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Content from '../Content'
-import * as contentActions from '../../actions/ContentActions'
 import './style.css'
 
 class Layout extends Component {
@@ -30,14 +29,8 @@ class Layout extends Component {
 function mapStateToProps (state) {
   return {
     header: state.header,
-    footer: state.simple,
-    content: state
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    contentActions: bindActionCreators(contentActions, dispatch)
+    footer: state.simple
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(mapStateToProps)(Layout)
