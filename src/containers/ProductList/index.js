@@ -20,7 +20,7 @@ class ProductList extends Component {
         if (fetching) {
             return (
                 <div>
-                    <p><img className="product-list__loader" src="/static/img/loader.gif" /></p>  
+                    <p><img className="product-list__loader" src="/loader.gif" /></p>  
                 </div>
             ) 
         } else if (error) {
