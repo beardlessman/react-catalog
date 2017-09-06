@@ -3,25 +3,24 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ProductCard from '../ProductCard'
 import Pagination from '../Pagination'
-import * as productListActions from '../../actions/ProductListActions'
+import * as appActions from '../../actions/AppActions'
 import './style.css'
-import './img/loader.gif'
 
 class ProductList extends Component {
-    componentDidMount() {
-        const settings = this.props.settings
-        this.props.productListActions.loadProducts(settings)
-    }
+    // componentDidMount() {
+    //     const settings = this.props.settings
+    //     this.props.appActions.loadProducts(settings)
+    // }
 
-    justChangeSettings() {
-        const settings = this.props.settings
-        const page = +this.props.match.params.page
-        if (page) {
-            const limit = settings.pagination.limit
-            settings.pagination.offset = (page - 1)  * limit
-        }
-        this.props.productListActions.justChangeSettings(settings)
-    }
+    // changeSettings() {
+    //     const settings = this.props.settings
+    //     const page = +this.props.match.params.page
+    //     if (page) {
+    //         const limit = settings.pagination.limit
+    //         settings.pagination.offset = (page - 1)  * limit
+    //     }
+    //     this.props.appActions.changeSettings(settings)
+    // }
 
     render() {
         const fetching = this.props.fetching
@@ -45,7 +44,7 @@ class ProductList extends Component {
             const data = this.magic(rawData)
             const page = this.props.settings.pagination.offset / this.props.settings.pagination.limit + 1
 
-            this.justChangeSettings()
+            // this.changeSettings()
 
             if (data.length > 0) {
                 products = data.map((item, id) => {
@@ -55,9 +54,8 @@ class ProductList extends Component {
                 });
     
                 return (
-                    <div>
-                        {/* <p>страница #{page}</p> */}
-                        <Pagination />
+                    <div className="product-list__wrapper">
+                        <p>страница {page}</p>
                         <div className="product-list">{products}</div>
                     </div>
                 ) 
@@ -127,15 +125,15 @@ class ProductList extends Component {
 }
 function mapStateToProps (state) {
   return {
-    list: state.productList.data,
-    fetching: state.productList.fetching,
-    error: state.productList.error,
-    settings: state.productList.settings
+    list: state.app.data,
+    fetching: state.app.fetching,
+    error: state.app.error,
+    settings: state.app.settings
   }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        productListActions: bindActionCreators(productListActions, dispatch)
+        appActions: bindActionCreators(appActions, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

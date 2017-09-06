@@ -1,6 +1,9 @@
 .product-list {
     margin: 0 -8px;
 }
+.product-list__wrapper {
+    position: relative;
+}
 .product-list__loader {
     display: block;
     width: 50px;

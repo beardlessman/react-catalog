@@ -24,7 +24,7 @@ const Test = ({store}) => (
 render(
     <Provider store={STORE}>
         <ConnectedRouter history={history}>
-            <Route component={App} />
+            <Route path="/page=:page" component={App} />
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')

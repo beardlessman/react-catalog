@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as filterActions from '../../actions/FilterActions'
-import * as productListActions from '../../actions/ProductListActions'
+import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class Filter extends Component {
@@ -10,7 +10,7 @@ class Filter extends Component {
     inputFilterText = (e) => {
       e.preventDefault()
       const actions = this.props.filterActions
-      const listActions = this.props.productListAction
+      const listActions = this.props.appActions
       const filterText = document.getElementById("filterText").value
 
       let newSettings = {}
@@ -35,8 +35,16 @@ class Filter extends Component {
         return (
             <div className="filter">
                 <form onSubmit={this.inputFilterText}>
-                    <input id="filterText" type="text" placeholder="Search..." value={filter.inputText} onChange={this.inputHandler}/>
-                    <button type="submit">GO</button>
+                  <div className="input">
+                    <input 
+                      id="filterText" 
+                      className="input__field"
+                      type="text" 
+                      placeholder="Search..." 
+                      value={filter.inputText} 
+                      onChange={this.inputHandler}/>
+                    <button type="submit" className="input__btn">GO</button>
+                  </div>
                 </form>
             </div>
     )
@@ -46,13 +54,13 @@ class Filter extends Component {
 function mapStateToProps (state) {
   return {
     filter: state.filter,
-    settings: state.productList.settings
+    settings: state.app.settings
   }
 }
 function mapDispatchToProps(dispatch) {
   return {
     filterActions: bindActionCreators(filterActions, dispatch),
-    productListAction: bindActionCreators(productListActions, dispatch)
+    appActions: bindActionCreators(appActions, dispatch)
   }
 }
 

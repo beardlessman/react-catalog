@@ -17,8 +17,13 @@ class Cart extends Component {
         sum = sum + element.userId * 100
     });
     return (
-      <div className={ (quantity > 0) ? 'cart' : 'cart hidden' }>
-        <p>В корзине {quantity} товаров (а) на сумму {sum} рублей <button onClick={this.clearCart.bind(this)}>я передумал покупать</button></p>
+      <div className="cart">
+        { (quantity > 0) ?
+          <p className="cart__text">{quantity} тов. {sum} руб <button onClick={this.clearCart.bind(this)}>очистить</button></p> 
+        :
+        <p className="cart__text cart__text-empty">В корзине пусто</p>
+        }
+        
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as productListActions from '../../actions/ProductListActions'
+import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class Sort extends Component {
@@ -61,12 +61,12 @@ class Sort extends Component {
 
 function mapStateToProps (state) {
   return {
-    settings: state.productList.settings
+    settings: state.app.settings
   }
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(productListActions, dispatch)
+    actions: bindActionCreators(appActions, dispatch)
   }
 }
 

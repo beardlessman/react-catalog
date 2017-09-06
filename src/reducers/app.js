@@ -2,9 +2,8 @@ import {
     LOAD_PRODUCTS_REQUEST, 
     LOAD_PRODUCTS_SUCCESS,
     LOAD_PRODUCTS_ERROR,
-    CHANGE_SORTING,
     CHANGE_SETTINGS
-} from '../constants/ProductList'
+} from '../constants/App'
 
 export const initialState = {
     data: [],
@@ -15,10 +14,25 @@ export const initialState = {
         abc: false,
         price: false,
         direction: 1
+    },
+    settings: {
+        sort: {
+            id: true,
+            abc: false,
+            price: false,
+            direction: 1
+        },
+        filter: {
+            text: ''
+        }, 
+        pagination: {
+            limit: 10,
+            offset: 0
+        }
     }
 };
   
-export default function user(state = initialState, action) {
+export default function app(state = initialState, action) {
     switch (action.type) {
         case LOAD_PRODUCTS_REQUEST:
             return {...state, data: action.payload, fetching: true}
@@ -26,10 +40,8 @@ export default function user(state = initialState, action) {
             return {...state, data: action.payload, fetching: false, error: false}
         case LOAD_PRODUCTS_ERROR:
             return {...state, data: action.payload, error: true, fetching: false}
-        // case CHANGE_SORTING:
-        //     return {...state, sortSettings: action.payload}
-        // case CHANGE_SETTINGS:
-        //     return {...state, settings: action.payload}
+        case CHANGE_SETTINGS:
+            return {...state, settings: action.payload}
         default:
             return state;
     }

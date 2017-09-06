@@ -11,6 +11,26 @@
     background: #b80f29;
     position: relative;
     display: block;
-    padding: 16px;
+    padding: 10px 16px;
     color: #fff;
+    height: 64px;
+    box-sizing: border-box;
+}
+.header__logo, .header__filter, .header__cart {
+    float: left;
+}
+.header__logo, .header__cart {
+    width: 25%;
+}
+.header__filter {
+    width: 50%;
+}
+.header__cart {
+    padding: 0 16px;
+}
+.logo {
+    display: block;
+    height: 40px;
+    width: 105px;
+    padding-top: 6px;
 }

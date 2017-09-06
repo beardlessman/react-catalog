@@ -3,9 +3,8 @@ import {
     LOAD_PRODUCTS_SUCCESS,
     LOAD_PRODUCTS_ERROR,
     CHANGE_SETTINGS
-} from '../constants/ProductList'
+} from '../constants/App'
 import axios from 'axios' // ajax library
-import $ from 'jquery'
 
 function load (dispatch, settings) {
     dispatch({
@@ -36,41 +35,20 @@ function load (dispatch, settings) {
             }, 50)
         })
 }
-function getRandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.round(Math.random() * letters.length)];
-    }
-    return color;
-}
-function someSideEffect() {
-    $('.header__inner').css({background: getRandomColor()})
-}
-
 export function loadProducts (settings) {
     return (dispatch) => {
         load(dispatch, settings)
     }
 }
-// export function changeSettings (settings) {
-//     return (dispatch) => {
-//         // someSideEffect()
 
-//         dispatch({
-//             type: CHANGE_SETTINGS,
-//             payload: settings
-//         })
+export function changeSettings (settings) {
+    return (dispatch) => {
 
-//         load(dispatch, settings)
-//     }
-// }
+        dispatch({
+            type: CHANGE_SETTINGS,
+            payload: settings
+        })
 
-// export function justChangeSettings (settings) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: CHANGE_SETTINGS,
-//             payload: settings
-//         })
-//     }
-// }
+        load(dispatch, settings)
+    }
+}

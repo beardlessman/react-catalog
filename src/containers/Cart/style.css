@@ -1,3 +1,24 @@
-.cart.hidden {
-    display: none;
+.cart {
+    text-align: center;
+    margin-top: 6px;
+}
+.cart__text {
+    display: inline-block;
+    overflow: hidden;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: nowrap;
+    min-width: 80px;
+    max-width: 100%;
+    padding: 6px 10px;
+    text-align: center;
+    vertical-align: middle;
+
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 18px;
+}
+.cart__text-empty {
+    border: 1px solid #d71233;
+    border-radius: 1000px;
 }

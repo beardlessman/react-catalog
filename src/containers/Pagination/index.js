@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as productListActions from '../../actions/ProductListActions'
+import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class Pagination extends Component {
@@ -25,7 +25,7 @@ class Pagination extends Component {
         const prevSettings = this.props.settings
         let offset = this.limit * e.target.getAttribute('data-target') - this.limit
         let newSettings = {...prevSettings, pagination: {limit: this.limit, offset: offset}}
-        this.props.productListActions.changeSettings(newSettings)
+        this.props.appActions.changeSettings(newSettings)
     }
     makeBtnsArray() {
         let pages = this.total / this.limit
@@ -34,8 +34,13 @@ class Pagination extends Component {
 
         if (currentPage > 1) {
             buttons.push(
-                <Link to={`/page=${currentPage-1}`} key="prev">
-                    <button onClick={this.changeSettings} data-target={currentPage - 1}>prev</button>
+                <Link 
+                    to={`/page=${currentPage-1}`} 
+                    key="prev" 
+                    className="pagination__item pagination__item-prev"  
+                    onClick={this.changeSettings} 
+                    data-target={currentPage - 1}>
+                    prev
                 </Link>
             )
         }
@@ -43,8 +48,12 @@ class Pagination extends Component {
         for (let i = currentPage-2; i < currentPage + 3; i++) {
             if (i == currentPage) {
                 buttons.push(
-                    <Link to={`/page=${i}`} key={i}>
-                        <button className="current" data-target={i}>{i}</button>
+                    <Link 
+                        to={`/page=${i}`} 
+                        key={i} 
+                        className="pagination__item current" 
+                        data-target={i}>
+                        {i}
                     </Link>
                 )  
             } else if (i > pages) {
@@ -53,8 +62,13 @@ class Pagination extends Component {
                 buttons.push()
             } else {
                 buttons.push(
-                    <Link to={`/page=${i}`} key={i}>
-                        <button onClick={this.changeSettings} data-target={i}>{i}</button>
+                    <Link 
+                        to={`/page=${i}`} 
+                        key={i} 
+                        className="pagination__item" 
+                        onClick={this.changeSettings} 
+                        data-target={i}>
+                        {i}
                     </Link>
                 )   
             }
@@ -62,8 +76,13 @@ class Pagination extends Component {
 
         if (currentPage < pages) {
             buttons.push(
-                <Link to={`/page=${currentPage + 1}`} key="next">
-                    <button onClick={this.changeSettings} data-target={currentPage + 1}>next</button>
+                <Link 
+                    to={`/page=${currentPage + 1}`} 
+                    key="next" 
+                    className="pagination__item pagination__item-next" 
+                    onClick={this.changeSettings} 
+                    data-target={currentPage + 1}>
+                    next
                 </Link>
             )
         }
@@ -77,7 +96,6 @@ class Pagination extends Component {
         return (
                 <div>
                     <div className="pagination">
-                        {/* <Link to="/test">Link to test</Link> */}
                         {buttons}
                     </div>
                 </div>
@@ -87,12 +105,12 @@ class Pagination extends Component {
 
 function mapStateToProps (state) {
   return {
-    settings: state.productList.settings
+    settings: state.app.settings
   }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        productListActions: bindActionCreators(productListActions, dispatch)
+        appActions: bindActionCreators(appActions, dispatch)
     }
 }
 
