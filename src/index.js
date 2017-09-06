@@ -24,7 +24,10 @@ const Test = ({store}) => (
 render(
     <Provider store={STORE}>
         <ConnectedRouter history={history}>
-            <Route path="/page=:page" component={App} />
+            <div>
+                <Route exact path="/" component={App} />
+                <Route path="/page=:page" component={App} />
+            </div>
         </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
