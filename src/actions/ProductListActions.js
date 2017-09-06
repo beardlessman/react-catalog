@@ -57,11 +57,22 @@ export function changeSettings (settings) {
     return (dispatch) => {
         someSideEffect()
 
+        console.log('change settings')
+
         dispatch({
             type: CHANGE_SETTINGS,
             payload: settings
         })
 
         load(dispatch, settings)
+    }
+}
+
+export function justChangeSettings (settings) {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_SETTINGS,
+            payload: settings
+        })
     }
 }

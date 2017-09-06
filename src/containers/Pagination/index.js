@@ -13,9 +13,8 @@ class Pagination extends Component {
     constructor(props) {
         super(props)
 
-        this.paginationSettings = this.props.settings.pagination
         this.total = 100
-        this.limit = this.paginationSettings.limit
+        this.limit = this.props.settings.pagination.limit
     }
     componentDidMount() {
         // get total count products -> this.total
@@ -27,7 +26,6 @@ class Pagination extends Component {
         let offset = this.limit * e.target.getAttribute('data-target') - this.limit
         let newSettings = {...prevSettings, pagination: {limit: this.limit, offset: offset}}
         this.props.productListActions.changeSettings(newSettings)
-        console.log(newSettings)
     }
     makeBtnsArray() {
         let pages = this.total / this.limit
@@ -35,51 +33,57 @@ class Pagination extends Component {
         let currentPage = ( this.props.settings.pagination.offset / this.limit ) + 1
 
         if (currentPage > 1) {
-            buttons.push(<button key="prev" onClick={this.changeSettings} data-target={currentPage - 1}>prev</button>)
+            buttons.push(
+                <Link to={`/page=${currentPage-1}`} key="prev">
+                    <button onClick={this.changeSettings} data-target={currentPage - 1}>prev</button>
+                </Link>
+            )
         }
 
         for (let i = currentPage-2; i < currentPage + 3; i++) {
             if (i == currentPage) {
-                // buttons.push(<button key={i} className="current" data-target={i}>{i}</button>) 
-                buttons.push(<Link key="kek" to="/test"><button>link to test</button></Link>)    
+                buttons.push(
+                    <Link to={`/page=${i}`} key={i}>
+                        <button className="current" data-target={i}>{i}</button>
+                    </Link>
+                )  
             } else if (i > pages) {
                 buttons.push()
             } else if (i < 1) {
                 buttons.push()
             } else {
-                buttons.push(<button key={i} onClick={this.changeSettings} data-target={i}>{i}</button>)   
+                buttons.push(
+                    <Link to={`/page=${i}`} key={i}>
+                        <button onClick={this.changeSettings} data-target={i}>{i}</button>
+                    </Link>
+                )   
             }
         }
 
         if (currentPage < pages) {
-            buttons.push(<button key="next" onClick={this.changeSettings} data-target={currentPage + 1}>next</button>)
+            buttons.push(
+                <Link to={`/page=${currentPage + 1}`} key="next">
+                    <button onClick={this.changeSettings} data-target={currentPage + 1}>next</button>
+                </Link>
+            )
         }
 
         return buttons
     }
     render() {
         let buttons = this.makeBtnsArray()
+        console.log(this.props.settings.pagination.offset)
 
         return (
-            <Router>
                 <div>
                     <div className="pagination">
-                        Это пагинатор. Он выводит по {this.limit} товаров на странице
+                        {/* <Link to="/test">Link to test</Link> */}
                         {buttons}
                     </div>
-
-                    <Route path="/test" component={Test}/>
                 </div>
-            </Router>
         )
     }
 }
-
-const Test = ({ match }) => (
-    <div>
-      <h2>Test</h2>
-    </div>
-)
 
 function mapStateToProps (state) {
   return {

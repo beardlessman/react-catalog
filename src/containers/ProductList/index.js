@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ProductCard from '../ProductCard'
+import Pagination from '../Pagination'
 import * as productListActions from '../../actions/ProductListActions'
 import './style.css'
 import './img/loader.gif'
@@ -10,6 +11,16 @@ class ProductList extends Component {
     componentDidMount() {
         const settings = this.props.settings
         this.props.productListActions.loadProducts(settings)
+    }
+
+    justChangeSettings() {
+        const settings = this.props.settings
+        const page = +this.props.match.params.page
+        if (page) {
+            const limit = settings.pagination.limit
+            settings.pagination.offset = (page - 1)  * limit
+        }
+        this.props.productListActions.justChangeSettings(settings)
     }
 
     render() {
@@ -32,6 +43,9 @@ class ProductList extends Component {
         } else {
             const rawData = this.props.list
             const data = this.magic(rawData)
+            const page = this.props.settings.pagination.offset / this.props.settings.pagination.limit + 1
+
+            this.justChangeSettings()
 
             if (data.length > 0) {
                 products = data.map((item, id) => {
@@ -42,6 +56,8 @@ class ProductList extends Component {
     
                 return (
                     <div>
+                        {/* <p>страница #{page}</p> */}
+                        <Pagination />
                         <div className="product-list">{products}</div>
                     </div>
                 ) 

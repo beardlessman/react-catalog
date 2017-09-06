@@ -10,7 +10,7 @@ export default class Toolbar extends Component {
       <div className="toolbar">
           <h1 className="title">Заголовок</h1>
           <Sort />
-          <Pagination />
+          {/* <Pagination /> */}
       </div>
     )
   }
