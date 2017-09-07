@@ -1,6 +1,30 @@
+.sort {
+    margin-top: 10px;
+}
+.btn-group {
+    display: inline-block;
+    margin-left: 10px;
+}
+.sort-btn {
+    height: 30px;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 12px;
+}
+.sort-btn + .sort-btn {
+    margin-left: -1px;
+}
 .sort-btn.active {
-    color: green;
-    border-color: green;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ff1b41;
+}
+.sort-btn:hover {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ff1b41;
+    box-shadow: 0 3px 7px 0 rgba(23, 25, 26, 0.15);
+    color: #ff1b41;
 }
 
 .dir-btn:before {

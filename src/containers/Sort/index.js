@@ -50,9 +50,12 @@ class Sort extends Component {
         const sort = this.props.settings.sort
         return (
             <div className="sort">
-                <button onClick={() => this.changeSorting('id')} className={sort.id ? 'sort-btn active' : 'sort-btn'}>Default</button>
-                <button onClick={() => this.changeSorting('abc')} className={sort.abc ? 'sort-btn active' : 'sort-btn'}>Sort by name</button>
-                <button onClick={() => this.changeSorting('price')} className={sort.price ? 'sort-btn active' : 'sort-btn'}>Sort by price</button>
+                Сортировка:
+                <div className="btn-group">
+                    <Button onClick={() => this.changeSorting('id')} mod={sort.id ? ' sort-btn active' : ' sort-btn'} text="By ID" />
+                    <Button onClick={() => this.changeSorting('abc')} mod={sort.abc ? ' sort-btn active' : ' sort-btn'} text="By name" />
+                    <Button onClick={() => this.changeSorting('price')} mod={sort.price ? ' sort-btn active' : ' sort-btn'} text="By price" />
+                </div>
 
                 <Button onClick={this.changeDirection} mod={(sort.direction > 0) ? '_dirup' : '_dirdown'} ></Button>
             </div>

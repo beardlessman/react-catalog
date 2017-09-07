@@ -3,7 +3,7 @@ import rootReducer from '../reducers'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import { routerMiddleware, push } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 
 export const history = createHistory()
@@ -15,7 +15,7 @@ export function configureStore(initialState) {
     const store = createStore( 
         rootReducer, 
         initialState,
-        applyMiddleware(middleware, thunk)
+        applyMiddleware(middleware, thunk, logger)
     );
     
     if (module.hot) {

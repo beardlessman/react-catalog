@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react'
 import {
   Route
 } from 'react-router-dom'

@@ -1,1 +1,0 @@
-export const CHANGE_SORTING = 'CHANGE_SORTING'

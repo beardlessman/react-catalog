@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ProductCard from '../ProductCard'
-import Pagination from '../Pagination'
 import './style.css'
 
 class ProductList extends Component {

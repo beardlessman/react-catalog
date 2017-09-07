@@ -31,7 +31,6 @@ class Filter extends Component {
 
     render() {
         const filter = this.props.filter
-        const settings = this.props.settings
         return (
             <div className="filter">
                 <form onSubmit={this.inputFilterText}>

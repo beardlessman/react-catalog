@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ConnectedRouter, routerReducer, push } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 
 import filter from './filter'
 import cart from './cart'

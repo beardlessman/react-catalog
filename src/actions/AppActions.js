@@ -4,9 +4,9 @@ import {
     LOAD_PRODUCTS_ERROR,
     CHANGE_SETTINGS
 } from '../constants/App'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { push } from 'react-router-redux'
 import { STORE } from '../index.js'
-import axios from 'axios' // ajax library
+import axios from 'axios'
 
 function load (dispatch, settings) {
     dispatch({
@@ -47,9 +47,9 @@ function getUrlBySettings(settings) {
 
     function sortType () {
         for (var key in settings.sort) {
-            if (settings.sort[key] == true) {
+            if (settings.sort[key] === true) {
                 let sort = key
-                if ( sort == 'direction' ) {
+                if ( sort === 'direction' ) {
                     sort = 'id'
                 }
                 return sort

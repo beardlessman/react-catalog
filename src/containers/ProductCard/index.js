@@ -92,7 +92,7 @@ class ProductCard extends Component {
                         onChange={this.changeQuantity}
                         value={quantity} />
                 :
-                    <Button onClick={this.addToCart.bind(this)} text="Добавить в корзину" mod="_add" />
+                    <Button onClick={this.addToCart} text="Добавить в корзину" mod="_add" />
               }
             </div>
           </div>

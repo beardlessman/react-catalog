@@ -1,10 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Filter from '../../containers/Filter'
 import Cart from '../../containers/Cart'
-import {
-  Route,
-  Link
-} from 'react-router-dom'
 import './style.css'
 
 export default class Header extends Component {
