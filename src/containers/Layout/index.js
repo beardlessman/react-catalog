@@ -10,17 +10,15 @@ import Footer from '../../components/Footer'
 import Content from '../Content'
 import './style.css'
 
-class Layout extends Component {
+export default class Layout extends Component {
   render() {
-    const { header, content, footer } = this.props
-    const contentActions = this.props.contentActions
     return (
       <div className="layout">
         <div className="layout__header">
-          <Header data={header}/>
+          <Header/>
         </div>
         <div className="layout__content">
-          <Route component={Content} data={content} actions={contentActions} className="layout__content"/>
+          <Route component={Content} className="layout__content"/>
         </div>
         <div className="layout__footer">
           <Footer />
@@ -29,12 +27,3 @@ class Layout extends Component {
     )
   }
 }
-
-function mapStateToProps (state) {
-  return {
-    header: state.header,
-    footer: state.simple
-  }
-}
-
-export default connect(mapStateToProps)(Layout)

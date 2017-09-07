@@ -19,6 +19,7 @@ class Filter extends Component {
       }
 
       newSettings.filter.text = filterText
+      newSettings.pagination.offset = 0
 
       listActions.changeSettings(newSettings)
       actions.inputFilterText(filterText)

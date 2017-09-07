@@ -7,20 +7,6 @@ import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class ProductList extends Component {
-    // componentDidMount() {
-    //     const settings = this.props.settings
-    //     this.props.appActions.loadProducts(settings)
-    // }
-
-    // changeSettings() {
-    //     const settings = this.props.settings
-    //     const page = +this.props.match.params.page
-    //     if (page) {
-    //         const limit = settings.pagination.limit
-    //         settings.pagination.offset = (page - 1)  * limit
-    //     }
-    //     this.props.appActions.changeSettings(settings)
-    // }
 
     render() {
         const fetching = this.props.fetching
@@ -41,10 +27,9 @@ class ProductList extends Component {
             ) 
         } else {
             const rawData = this.props.list
-            const data = this.magic(rawData)
-            const page = this.props.settings.pagination.offset / this.props.settings.pagination.limit + 1
+            let data = rawData
 
-            // this.changeSettings()
+            // data = this.magic(rawData)
 
             if (data.length > 0) {
                 products = data.map((item, id) => {
@@ -55,7 +40,6 @@ class ProductList extends Component {
     
                 return (
                     <div className="product-list__wrapper">
-                        <p>страница {page}</p>
                         <div className="product-list">{products}</div>
                     </div>
                 ) 

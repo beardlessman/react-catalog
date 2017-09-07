@@ -13,7 +13,7 @@ class Pagination extends Component {
     constructor(props) {
         super(props)
 
-        this.total = 100
+        this.total = this.props.meta.total
         this.limit = this.props.settings.pagination.limit
     }
     componentDidMount() {
@@ -32,66 +32,67 @@ class Pagination extends Component {
         let buttons = []
         let currentPage = ( this.props.settings.pagination.offset / this.limit ) + 1
 
-        if (currentPage > 1) {
-            buttons.push(
-                <Link 
-                    to={`/page=${currentPage-1}`} 
-                    key="prev" 
-                    className="pagination__item pagination__item-prev"  
-                    onClick={this.changeSettings} 
-                    data-target={currentPage - 1}>
-                    prev
-                </Link>
-            )
-        }
-
-        for (let i = currentPage-2; i < currentPage + 3; i++) {
-            if (i == currentPage) {
+        if (pages > 0) {
+            if (currentPage > 1) {
                 buttons.push(
                     <Link 
-                        to={`/page=${i}`} 
-                        key={i} 
-                        className="pagination__item current" 
-                        data-target={i}>
-                        {i}
-                    </Link>
-                )  
-            } else if (i > pages) {
-                buttons.push()
-            } else if (i < 1) {
-                buttons.push()
-            } else {
-                buttons.push(
-                    <Link 
-                        to={`/page=${i}`} 
-                        key={i} 
-                        className="pagination__item" 
+                        to={`/page=${currentPage-1}`} 
+                        key="prev" 
+                        className="pagination__item pagination__item-prev"  
                         onClick={this.changeSettings} 
-                        data-target={i}>
-                        {i}
+                        data-target={currentPage - 1}>
+                        prev
                     </Link>
-                )   
+                )
             }
-        }
-
-        if (currentPage < pages) {
-            buttons.push(
-                <Link 
-                    to={`/page=${currentPage + 1}`} 
-                    key="next" 
-                    className="pagination__item pagination__item-next" 
-                    onClick={this.changeSettings} 
-                    data-target={currentPage + 1}>
-                    next
-                </Link>
-            )
+    
+            for (let i = currentPage-2; i < currentPage + 3; i++) {
+                if (i == currentPage) {
+                    buttons.push(
+                        <Link 
+                            to={`/page=${i}`} 
+                            key={i} 
+                            className="pagination__item current" 
+                            data-target={i}>
+                            {i}
+                        </Link>
+                    )  
+                } else if (i > pages) {
+                    buttons.push()
+                } else if (i < 1) {
+                    buttons.push()
+                } else {
+                    buttons.push(
+                        <Link 
+                            to={`/page=${i}`} 
+                            key={i} 
+                            className="pagination__item" 
+                            onClick={this.changeSettings} 
+                            data-target={i}>
+                            {i}
+                        </Link>
+                    )   
+                }
+            }
+    
+            if (currentPage < pages) {
+                buttons.push(
+                    <Link 
+                        to={`/page=${currentPage + 1}`} 
+                        key="next" 
+                        className="pagination__item pagination__item-next" 
+                        onClick={this.changeSettings} 
+                        data-target={currentPage + 1}>
+                        next
+                    </Link>
+                )
+            }
         }
 
         return buttons
     }
     render() {
         let buttons = this.makeBtnsArray()
-        console.log(this.props.settings.pagination.offset)
 
         return (
                 <div>
@@ -105,7 +106,8 @@ class Pagination extends Component {
 
 function mapStateToProps (state) {
   return {
-    settings: state.app.settings
+    settings: state.app.settings,
+    meta: state.app.meta
   }
 }
 function mapDispatchToProps(dispatch) {

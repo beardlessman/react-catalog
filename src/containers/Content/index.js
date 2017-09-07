@@ -21,9 +21,6 @@ export default class Content extends Component {
     return (
       <div className="content">
         <Route component={Toolbar} />
-        {/* <Route path="/test" component={Test} />
-        <Route exact path="/" component={ProductList} />
-        <Route path="/page=:page" component={ProductList} /> */}
         <Route component={ProductList} />
       </div>
     )

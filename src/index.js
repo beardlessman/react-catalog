@@ -14,13 +14,6 @@ import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-ro
 
 const STORE = configureStore();
 
-const Test = ({store}) => (
-    <div>
-        <h2>Test</h2>
-        <Link to="/">Link to App</Link>
-    </div> 
-)
-
 render(
     <Provider store={STORE}>
         <ConnectedRouter history={history}>

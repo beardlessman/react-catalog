@@ -22,7 +22,8 @@ function load (dispatch, settings) {
             setTimeout(() => {
                 dispatch({
                     type: LOAD_PRODUCTS_SUCCESS,
-                    payload: request.data
+                    payload: request.data,
+                    meta: request.meta
                 })
             }, 50)
         })
@@ -34,11 +35,6 @@ function load (dispatch, settings) {
                 })
             }, 50)
         })
-}
-export function loadProducts (settings) {
-    return (dispatch) => {
-        load(dispatch, settings)
-    }
 }
 
 export function changeSettings (settings) {
