@@ -4,6 +4,8 @@ import {
     LOAD_PRODUCTS_ERROR,
     CHANGE_SETTINGS
 } from '../constants/App'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { STORE } from '../index.js'
 import axios from 'axios' // ajax library
 
 function load (dispatch, settings) {
@@ -39,6 +41,29 @@ function load (dispatch, settings) {
 
 export function changeSettings (settings) {
     return (dispatch) => {
+
+        let filterText = settings.filter.text
+        let page = ( settings.pagination.offset / settings.pagination.limit ) + 1
+        let sort = sortType()
+        let direction = settings.sort.direction
+
+        function sortType () {
+            for (var key in settings.sort) {
+                if (settings.sort[key] == true) {
+                    let sort = key
+                    if ( sort == 'direction' ) {
+                        sort = 'id'
+                    }
+                    return sort
+                }
+            }
+        }
+
+        // if (page == 1 && direction == 1 && sort == 'id' && filterText == '') {
+        //     STORE.dispatch(push('/'))    
+        // } else STORE.dispatch(push(`/q=${filterText}&sort=${sort}&direction=${direction}&page=${page}`)) 
+        
+        STORE.dispatch(push(`/q=${filterText}&sort=${sort}&direction=${direction}&page=${page}`)) 
 
         dispatch({
             type: CHANGE_SETTINGS,

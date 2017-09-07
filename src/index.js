@@ -19,7 +19,8 @@ render(
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path="/" component={App} />
-                <Route path="/page=:page" component={App} />
+                {/* <Route path="/*sort=:sortSet/" component={App} /> */}
+                <Route path="/q=:filter?&sort=:sortType?&direction=:direction?&page=:pageNum?" component={App} />
             </div>
         </ConnectedRouter>
     </Provider>,

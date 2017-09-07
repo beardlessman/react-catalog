@@ -11,7 +11,7 @@ export const initialState = {
     error: false,
     settings: {
         sort: {
-            id: true,
+            id: false,
             abc: false,
             price: false,
             direction: 1

@@ -11,10 +11,19 @@ import Layout from '../Layout'
 class App extends Component {
   componentWillMount() {
     const settings = this.props.settings
-    const page = +this.props.match.params.page
+
+    const page = +this.props.match.params.pageNum
+    const sort = this.props.match.params.sortType
+    const direction = this.props.match.params.direction
+    const filter = this.props.match.params.filter ? this.props.match.params.filter : '' 
+
     if (page) {
         const limit = settings.pagination.limit
         settings.pagination.offset = (page - 1)  * limit
+
+        settings.sort[sort] = true
+        settings.sort.direction = direction
+        settings.filter.text = filter
     }
     this.props.appActions.changeSettings(settings)
   } 

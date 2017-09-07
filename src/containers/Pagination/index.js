@@ -35,27 +35,25 @@ class Pagination extends Component {
         if (pages > 0) {
             if (currentPage > 1) {
                 buttons.push(
-                    <Link 
-                        to={`/page=${currentPage-1}`} 
+                    <button 
                         key="prev" 
                         className="pagination__item pagination__item-prev"  
                         onClick={this.changeSettings} 
                         data-target={currentPage - 1}>
                         prev
-                    </Link>
+                    </button>
                 )
             }
     
             for (let i = currentPage-2; i < currentPage + 3; i++) {
                 if (i == currentPage) {
                     buttons.push(
-                        <Link 
-                            to={`/page=${i}`} 
+                        <button 
                             key={i} 
                             className="pagination__item current" 
                             data-target={i}>
                             {i}
-                        </Link>
+                        </button>
                     )  
                 } else if (i > pages) {
                     buttons.push()
@@ -63,28 +61,26 @@ class Pagination extends Component {
                     buttons.push()
                 } else {
                     buttons.push(
-                        <Link 
-                            to={`/page=${i}`} 
+                        <button 
                             key={i} 
                             className="pagination__item" 
                             onClick={this.changeSettings} 
                             data-target={i}>
                             {i}
-                        </Link>
+                        </button>
                     )   
                 }
             }
     
             if (currentPage < pages) {
                 buttons.push(
-                    <Link 
-                        to={`/page=${currentPage + 1}`} 
+                    <button 
                         key="next" 
                         className="pagination__item pagination__item-next" 
                         onClick={this.changeSettings} 
                         data-target={currentPage + 1}>
                         next
-                    </Link>
+                    </button>
                 )
             }
         }
