@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ProductCard from '../ProductCard'
 import Pagination from '../Pagination'
-import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class ProductList extends Component {
@@ -115,9 +114,4 @@ function mapStateToProps (state) {
     settings: state.app.settings
   }
 }
-function mapDispatchToProps(dispatch) {
-    return {
-        appActions: bindActionCreators(appActions, dispatch)
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
+export default connect(mapStateToProps)(ProductList)

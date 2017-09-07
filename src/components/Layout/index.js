@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 import {
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
+import Header from '../Header'
+import Footer from '../Footer'
 import Content from '../Content'
 import './style.css'
 

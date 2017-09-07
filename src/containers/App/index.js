@@ -6,12 +6,17 @@ import {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as appActions from '../../actions/AppActions'
-import Layout from '../Layout'
+import Layout from '../../components/Layout'
 
 class App extends Component {
   componentWillMount() {
-    const settings = this.props.settings
+    const settings = this.syncSettingsWithUrl() 
 
+    this.props.appActions.changeSettings(settings)
+  }
+  syncSettingsWithUrl() {
+    const settings = this.props.settings
+    
     const page = +this.props.match.params.pageNum
     const sort = this.props.match.params.sortType
     const direction = this.props.match.params.direction
@@ -25,8 +30,9 @@ class App extends Component {
         settings.sort.direction = direction
         settings.filter.text = filter
     }
-    this.props.appActions.changeSettings(settings)
-  } 
+
+    return settings
+  }
   render() {
     return (
       <Route component={Layout} />

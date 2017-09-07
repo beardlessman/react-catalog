@@ -13,8 +13,12 @@ export default class Toolbar extends Component {
     return (
       <div className="toolbar">
           <h1 className="title">Заголовок</h1>
-          <Route component={Sort} />
-          <Route component={Pagination} />
+          <div className="toolbar__sort">
+            <Route component={Sort} />
+          </div>
+          <div className="toolbar__pagination">
+            <Route component={Pagination} />
+          </div>
       </div>
     )
   }

@@ -6,7 +6,6 @@ import * as appActions from '../../actions/AppActions'
 import './style.css'
 
 class Filter extends Component {
-    
     inputFilterText = (e) => {
       e.preventDefault()
       const actions = this.props.filterActions

@@ -1,19 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import Toolbar from '../../components/Toolbar'
-import ProductList from '../ProductList'
-import { connect } from 'react-redux'
+import Toolbar from '../Toolbar'
+import ProductList from '../../containers/ProductList'
 import {
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import './style.css'
-
-const Test = () => (
-  <div>
-    <Link to="/">Link to App</Link>
-    <h2>Test</h2>
-  </div>
-)
 
 export default class Content extends Component {
   render() {
