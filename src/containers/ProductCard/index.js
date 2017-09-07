@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as cartActions from '../../actions/CartActions'
+import Button from '../../components/Button'
+import Counter from '../../components/Counter'
 import './style.css'
 
 class ProductCard extends Component {
@@ -56,13 +58,13 @@ class ProductCard extends Component {
     return newCart
   }
   
-  addToCart() {
+  addToCart = () => {
     this.changeCartItems(this.add());
   }
   removeFromCart = () => {
     this.changeCartItems(this.remove());
   }
-  changeQuantity(e) {
+  changeQuantity = (e) => {
     this.changeCartItems(this.changeToNewQuantity(e.target.value));
   }
   changeCartItems(data) {
@@ -76,19 +78,23 @@ class ProductCard extends Component {
     return (
       <div className="product-card">
           <div className="product-card__inner">
-            <p><strong>Номер</strong>: {data.id}</p>
-            <p><strong>Название</strong>: {data.title}</p>
-            <p><strong>Цена</strong>: {data.userId * 100} рублей</p>
-            {
-              (quantity > 0) ?
-              <p>
-                <button onClick={this.removeFromCart}>-</button>
-                <input type="number" value={quantity} onChange={this.changeQuantity.bind(this)}/>
-                <button onClick={this.addToCart.bind(this)}>+</button>
-              </p>
-              :
-              <button onClick={this.addToCart.bind(this)}>Добавить в корзину</button> 
-            }
+            <p className="product-card__image">
+              <img src="https://dummyimage.com/248x248/ccc/fff&text=something" />
+            </p>
+            <p className="product-card__title">{data.title}</p>
+            <p className="product-card__price">{data.userId * 100} ₽</p>
+            <div className="product-card__controls">
+              {
+                (quantity > 0) ? 
+                    <Counter 
+                        onInc={this.addToCart}
+                        onDec={this.removeFromCart}
+                        onChange={this.changeQuantity}
+                        value={quantity} />
+                :
+                    <Button onClick={this.addToCart.bind(this)} text="Добавить в корзину" mod="_add" />
+              }
+            </div>
           </div>
       </div>
     )

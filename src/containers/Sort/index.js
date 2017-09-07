@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as appActions from '../../actions/AppActions'
 import './style.css'
+import Button from '../../components/Button'
 
 class Sort extends Component {
     
@@ -30,7 +31,7 @@ class Sort extends Component {
 
       actions.changeSettings(newSettings)
     }
-    changeDirection() {
+    changeDirection = () => {
       const actions = this.props.actions
       const settings = this.props.settings.sort
       let direction = -settings.direction
@@ -53,7 +54,7 @@ class Sort extends Component {
                 <button onClick={() => this.changeSorting('abc')} className={sort.abc ? 'sort-btn active' : 'sort-btn'}>Sort by name</button>
                 <button onClick={() => this.changeSorting('price')} className={sort.price ? 'sort-btn active' : 'sort-btn'}>Sort by price</button>
 
-                <button onClick={() => this.changeDirection()} className={(sort.direction > 0) ? 'dir-btn up' : 'dir-btn down'} ></button>
+                <Button onClick={this.changeDirection} mod={(sort.direction > 0) ? '_dirup' : '_dirdown'} ></Button>
             </div>
     )
   }

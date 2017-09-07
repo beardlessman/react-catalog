@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import './style.css'
 import * as cartActions from '../../actions/CartActions'
+import Button from '../../components/Button'
 
 class Cart extends Component {
   clearCart() {
@@ -19,7 +20,10 @@ class Cart extends Component {
     return (
       <div className="cart">
         { (quantity > 0) ?
-          <p className="cart__text">{quantity} тов. {sum} руб <button onClick={this.clearCart.bind(this)}>очистить</button></p> 
+          <p className="cart__text">
+            {quantity} тов. {sum} руб
+            {/*<Button onClick={this.clearCart.bind(this)} mod="_clear"></Button>*/}
+          </p>
         :
         <p className="cart__text cart__text-empty">В корзине пусто</p>
         }
