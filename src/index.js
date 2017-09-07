@@ -10,9 +10,9 @@ import {
 import App from './containers/App'
 import './app.css'  
 import { configureStore, history } from './store/configureStore'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter, push } from 'react-router-redux'
 
-const STORE = configureStore();
+export const STORE = configureStore();
 
 render(
     <Provider store={STORE}>

@@ -3,7 +3,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as filterActions from '../../actions/FilterActions'
 import * as appActions from '../../actions/AppActions'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import './style.css'
+import { STORE } from '../../index.js'
 
 class Filter extends Component {
     
@@ -21,6 +23,7 @@ class Filter extends Component {
       newSettings.filter.text = filterText
       newSettings.pagination.offset = 0
 
+      STORE.dispatch(push('/'))
       listActions.changeSettings(newSettings)
       actions.inputFilterText(filterText)
     }
