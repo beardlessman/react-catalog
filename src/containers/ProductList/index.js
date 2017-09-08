@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ProductCard from '../ProductCard'
 import './style.css'
@@ -7,14 +6,15 @@ import './style.css'
 class ProductList extends Component {
 
     render() {
-        const fetching = this.props.fetching
-        const error = this.props.error
+        const fetching = this.props.fetching;
+        const error = this.props.error;
+        const listView = this.props.viewList;
         let products = []
 
         if (fetching) {
             return (
                 <div>
-                    <p><img className="product-list__loader" src="/loader.gif" /></p>  
+                    <p><img className="product-list__loader" src="/loader.gif" alt="loader"/></p>
                 </div>
             ) 
         } else if (error) {
@@ -32,7 +32,7 @@ class ProductList extends Component {
             if (data.length > 0) {
                 products = data.map((item, id) => {
                     return (
-                        <ProductCard key={id} data={item}/>
+                        <ProductCard key={id} data={item} view={listView}/>
                     )
                 });
     
@@ -107,10 +107,11 @@ class ProductList extends Component {
 }
 function mapStateToProps (state) {
   return {
-    list: state.app.data,
-    fetching: state.app.fetching,
-    error: state.app.error,
-    settings: state.app.settings
+      list: state.app.data,
+      fetching: state.app.fetching,
+      error: state.app.error,
+      settings: state.app.settings,
+      viewList: state.app.viewList
   }
 }
 export default connect(mapStateToProps)(ProductList)

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Toolbar from '../Toolbar'
 import ProductList from '../../containers/ProductList'
 import {

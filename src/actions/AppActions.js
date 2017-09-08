@@ -2,8 +2,9 @@ import {
     LOAD_PRODUCTS_REQUEST, 
     LOAD_PRODUCTS_SUCCESS,
     LOAD_PRODUCTS_ERROR,
-    CHANGE_SETTINGS
-} from '../constants/App'
+    CHANGE_SETTINGS,
+    CHANGE_VIEW_LIST
+} from '../constants/App';
 import { push } from 'react-router-redux'
 import { STORE } from '../index.js'
 import axios from 'axios'
@@ -72,5 +73,14 @@ export function changeSettings (settings) {
         })
 
         load(dispatch, settings)
+    }
+}
+
+export function changeViewList (view) {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_VIEW_LIST,
+            payload: view
+        });
     }
 }

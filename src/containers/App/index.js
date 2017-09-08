@@ -9,28 +9,29 @@ import Layout from '../../components/Layout'
 
 class App extends Component {
   componentWillMount() {
-    const settings = this.syncSettingsWithUrl() 
+    const settings = this.syncSettingsWithUrl()
 
     this.props.appActions.changeSettings(settings)
   }
   syncSettingsWithUrl() {
-    const settings = this.props.settings
-    
-    const page = +this.props.match.params.pageNum
-    const sort = this.props.match.params.sortType
-    const direction = this.props.match.params.direction
-    const filter = this.props.match.params.filter ? this.props.match.params.filter : '' 
+      const settings = this.props.settings;
+      const urlParams = this.props.match.params
 
-    if (page) {
-        const limit = settings.pagination.limit
-        settings.pagination.offset = (page - 1)  * limit
+      const page = +urlParams.pageNum
+      const sort = urlParams.sortType !== '' ? urlParams.sortType : 'id'
+      const direction = urlParams.direction
+      const filter = urlParams.filter ? urlParams.filter : ''
 
-        settings.sort[sort] = true
-        settings.sort.direction = direction
-        settings.filter.text = filter
-    }
+      if (page) {
+          const limit = settings.pagination.limit
+          settings.pagination.offset = (page - 1)  * limit
 
-    return settings
+          settings.sort[sort] = true
+          settings.sort.direction = direction
+          settings.filter.text = filter
+      }
+
+      return settings
   }
   render() {
     return (

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as appActions from '../../actions/AppActions'
@@ -14,16 +14,16 @@ class Sort extends Component {
 
       const typeSet = sortSettings[type] ? false : true
 
-      if (typeSet == false) {
+      if (typeSet === false) {
         return false
       }
 
       let newSettings = {}
-      for (var key in this.props.settings) {
+      for (let key in this.props.settings) {
         newSettings[key] = this.props.settings[key];
       }
 
-      for (var key in newSettings.sort) {
+      for (let key in newSettings.sort) {
           newSettings.sort[key] = false
       }
       newSettings.sort.direction = direction
@@ -52,9 +52,9 @@ class Sort extends Component {
             <div className="sort">
                 Сортировка:
                 <div className="btn-group">
-                    <Button onClick={() => this.changeSorting('id')} mod={sort.id ? ' sort-btn active' : ' sort-btn'} text="By ID" />
-                    <Button onClick={() => this.changeSorting('abc')} mod={sort.abc ? ' sort-btn active' : ' sort-btn'} text="By name" />
-                    <Button onClick={() => this.changeSorting('price')} mod={sort.price ? ' sort-btn active' : ' sort-btn'} text="By price" />
+                    <Button onClick={() => this.changeSorting('id')} mod={sort.id ? ' active' : ''}>By ID</Button>
+                    <Button onClick={() => this.changeSorting('abc')} mod={sort.abc ? '  active' : ''}>By name</Button>
+                    <Button onClick={() => this.changeSorting('price')} mod={sort.price ? ' active' : ''}>By price</Button>
                 </div>
 
                 <Button onClick={this.changeDirection} mod={(sort.direction > 0) ? '_dirup' : '_dirdown'} ></Button>

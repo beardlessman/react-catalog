@@ -136,3 +136,28 @@
     background-position: center;
     background-size: 8px 10px;
 }
+.btn-group {
+    display: inline-block;
+    margin-left: 10px;
+}
+.btn-group .button {
+    height: 30px;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 12px;
+}
+.btn-group .button + .button {
+    margin-left: -1px;
+}
+.btn-group .button.active {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ff1b41;
+}
+.btn-group .button:hover {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ff1b41;
+    box-shadow: 0 3px 7px 0 rgba(23, 25, 26, 0.15);
+    color: #ff1b41;
+}

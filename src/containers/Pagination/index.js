@@ -1,8 +1,4 @@
-import React, { Component, PropTypes } from 'react'
-import {
-    Route,
-    Link
-} from 'react-router-dom'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as appActions from '../../actions/AppActions'
@@ -45,7 +41,7 @@ class Pagination extends Component {
             }
     
             for (let i = currentPage-2; i < currentPage + 3; i++) {
-                if (i == currentPage) {
+                if (i === currentPage) {
                     buttons.push(
                         <button 
                             key={i} 
