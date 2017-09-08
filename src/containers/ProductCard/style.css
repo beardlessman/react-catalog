@@ -1,6 +1,5 @@
 .product-card {
     position: relative;
-    display: block;
     max-height: 400px;
     height: 400px;
     margin-bottom: 16px;
@@ -52,6 +51,7 @@
     height: 248px;
     object-fit: cover;
     box-sizing: border-box;
+    transition: all 0s ease;
 }
 .product-card__description {
     display: none;

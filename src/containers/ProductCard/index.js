@@ -16,7 +16,7 @@ class ProductCard extends Component {
       }
     }, this);
 
-    return quantity
+    return quantity;
   }
 
   addToCart = () => {

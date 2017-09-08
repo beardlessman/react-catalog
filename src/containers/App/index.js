@@ -1,38 +1,17 @@
-import React, { Component } from 'react'
-import {
-  Route
-} from 'react-router-dom'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as appActions from '../../actions/AppActions'
-import Layout from '../../components/Layout'
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as appActions from '../../actions/AppActions';
+import Layout from '../../components/Layout';
+import { syncSettingsWithUrl } from '../../helpers/appHelpers.js';
 
 class App extends Component {
   componentWillMount() {
-    const settings = this.syncSettingsWithUrl()
-
+    const settings = syncSettingsWithUrl(this.props.settings, this.props.match.params);
     this.props.appActions.changeSettings(settings)
   }
-  syncSettingsWithUrl() {
-      const settings = this.props.settings;
-      const urlParams = this.props.match.params
-
-      const page = +urlParams.pageNum
-      const sort = urlParams.sortType !== '' ? urlParams.sortType : 'id'
-      const direction = urlParams.direction
-      const filter = urlParams.filter ? urlParams.filter : ''
-
-      if (page) {
-          const limit = settings.pagination.limit
-          settings.pagination.offset = (page - 1)  * limit
-
-          settings.sort[sort] = true
-          settings.sort.direction = direction
-          settings.filter.text = filter
-      }
-
-      return settings
-  }
+  
   render() {
     return (
       <Route component={Layout} />
