@@ -7,6 +7,7 @@ import Counter from '../../components/Counter'
 import './style.css'
 
 class ProductCard extends Component {
+
   calcQuantity(arr, id) {
     let quantity = 0
     arr.forEach(function(element) {
@@ -18,57 +19,14 @@ class ProductCard extends Component {
     return quantity
   }
 
-  add() {
-    const data = this.props.data
-    let cart = this.props.cart.items.slice()
-    cart.push(data)
-    return cart
-  }
-  remove() {
-    const data = this.props.data
-    let cart = this.props.cart.items.slice()
-    const itemPosition = cart.indexOf(data)
-    cart.splice(itemPosition, 1)
-    return cart
-  }
-  changeToNewQuantity(newQuantity) {
-    const data = this.props.data
-    const cartData = this.props.cart
-    const quantity = this.calcQuantity(cartData.items, data.id)
-    
-    let newCart = cartData.items.slice()
-
-    if (newQuantity > quantity) {
-      let count = newQuantity - quantity
-
-      while (count > 0) {
-        newCart.push(data)
-        count--
-      }
-    } else if (quantity > newQuantity) {
-      let count = quantity - newQuantity
-      
-      while (count > 0) {
-        const itemPosition = newCart.indexOf(data)
-        newCart.splice(itemPosition, 1)
-
-        count--
-      }
-    }
-    return newCart
-  }
-  
   addToCart = () => {
-    this.changeCartItems(this.add());
+    this.props.cartActions.addItemToCart(this.props.data);
   }
   removeFromCart = () => {
-    this.changeCartItems(this.remove());
+    this.props.cartActions.removeItemFromCart(this.props.data);
   }
   changeQuantity = (e) => {
-    this.changeCartItems(this.changeToNewQuantity(e.target.value));
-  }
-  changeCartItems(data) {
-    this.props.cartActions.addItemToCart(data)
+    this.props.cartActions.changeItemQuantity(this.props.data, e.target.value);
   }
 
   render() {

@@ -11,12 +11,16 @@ class Cart extends Component {
   }
   render() {
     const cart = this.props.cart
+
     const quantity = cart.items.length
     let sum = 0
 
     cart.items.forEach(function(element) {
         sum = sum + element.userId * 100
     });
+      console.log(cart);
+      console.log(quantity, sum);
+
     return (
       <div className="cart">
         { (quantity > 0) ?
