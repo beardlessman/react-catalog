@@ -8,7 +8,6 @@ import Button from '../../components/Button'
 class ViewListToggler extends Component {
     toggleView = () => {
         let view = this.props.view;
-        console.log(view);
         if (view === 'grid') {
             view = 'list';
         } else {

@@ -9,46 +9,29 @@ class ProductList extends Component {
         const fetching = this.props.fetching;
         const error = this.props.error;
         const listView = this.props.viewList;
-        let products = []
-
-        if (fetching) {
+        let data = this.props.list;
+        let products = [];
+        products = data.map((item, id) => {
             return (
-                <div>
-                    <p><img className="product-list__loader" src="/loader.gif" alt="loader"/></p>
-                </div>
-            ) 
-        } else if (error) {
-            return (
-                <div>
-                    <p className="error">Нихуя не загрузилось!</p>
-                </div>
-            ) 
-        } else {
-            const rawData = this.props.list
-            let data = rawData
+                <ProductCard
+                    key={id}
+                    data={item}
+                    view={listView}/>
+            )
+        });
 
-            // data = this.magic(rawData)
-
-            if (data.length > 0) {
-                products = data.map((item, id) => {
-                    return (
-                        <ProductCard key={id} data={item} view={listView}/>
-                    )
-                });
-    
-                return (
-                    <div className="product-list__wrapper">
-                        <div className="product-list">{products}</div>
-                    </div>
-                ) 
-            } else {
-                return (
-                    <div>
-                        <p className="error">Таких товаров не бывает :(</p>
-                    </div>
-                ) 
-            }
-        }
+        return (
+            <div className={`product-list__wrapper ${ fetching ? 'product-list__wrapper_fetching' : '' }`}>
+                <img
+                    className={`product-list__loader ${ fetching ? '' : 'hidden' }`}
+                    src="/loader.gif"
+                    alt="loading..."/>
+                <p
+                    className={`error ${ error ? '' : 'hidden' }`}>
+                    Нихуя не загрузилось, смотрите на старые товары</p>
+                <div className="product-list">{products}</div>
+            </div>
+        )
     }
 
     // Filtering and sorting data

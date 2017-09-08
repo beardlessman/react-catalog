@@ -9,7 +9,7 @@ import { syncSettingsWithUrl } from '../../helpers/appHelpers.js';
 class App extends Component {
   componentWillMount() {
     const settings = syncSettingsWithUrl(this.props.settings, this.props.match.params);
-    this.props.appActions.changeSettings(settings)
+    this.props.appActions.changeSettings(settings);
   }
   
   render() {

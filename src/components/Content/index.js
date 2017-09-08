@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Toolbar from '../Toolbar'
+import Toolbar from '../../containers/Toolbar'
 import ProductList from '../../containers/ProductList'
 import {
   Route
@@ -11,7 +11,7 @@ export default class Content extends Component {
     
     return (
       <div className="content">
-        <Route component={Toolbar} />
+        <Toolbar />
         <Route component={ProductList} />
       </div>
     )

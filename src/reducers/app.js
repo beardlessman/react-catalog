@@ -38,7 +38,7 @@ export default function app(state = initialState, action) {
         case LOAD_PRODUCTS_SUCCESS:
             return {...state, data: action.payload, fetching: false, error: false, meta: {total: 100}};
         case LOAD_PRODUCTS_ERROR:
-            return {...state, data: action.payload, error: true, fetching: false};
+            return {...state, error: true, fetching: false};
         case CHANGE_SETTINGS:
             return {...state, settings: action.payload};
         case CHANGE_VIEW_LIST:

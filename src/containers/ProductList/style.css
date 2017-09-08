@@ -1,11 +1,24 @@
 .product-list {
     margin: 0 -8px;
+    transition: all 0.3s ease;
 }
 .product-list__wrapper {
     position: relative;
+    transition: all 1s ease;
 }
 .product-list__loader {
+    position: fixed;
     display: block;
     width: 50px;
-    margin: 50px auto;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    z-index: 1000;
+}
+.product-list__wrapper_fetching .product-list {
+    opacity: 0.3;
+}
+
+.hidden {
+    display: none;
 }

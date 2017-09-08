@@ -5,9 +5,10 @@ import {
     CHANGE_SETTINGS,
     CHANGE_VIEW_LIST
 } from '../constants/App';
-import { push } from 'react-router-redux'
-import { STORE } from '../index.js'
-import axios from 'axios'
+import { push } from 'react-router-redux';
+import { STORE } from '../index.js';
+import axios from 'axios';
+import { getUrlBySettings } from '../helpers/appHelpers.js';
 
 function load (dispatch, settings) {
     dispatch({
@@ -38,27 +39,6 @@ function load (dispatch, settings) {
                 })
             }, 50)
         })
-}
-
-function getUrlBySettings(settings) {
-    let filterText = settings.filter.text
-    let page = ( settings.pagination.offset / settings.pagination.limit ) + 1
-    let sort = sortType()
-    let direction = settings.sort.direction
-
-    function sortType () {
-        for (var key in settings.sort) {
-            if (settings.sort[key] === true) {
-                let sort = key
-                if ( sort === 'direction' ) {
-                    sort = 'id'
-                }
-                return sort
-            }
-        }
-    }
-    
-    return `/q=${filterText}&sort=${sort}&direction=${direction}&page=${page}`
 }
 
 export function changeSettings (settings) {

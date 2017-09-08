@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as cartActions from '../../actions/CartActions'
-import Button from '../../components/Button'
-import Counter from '../../components/Counter'
-import './style.css'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as cartActions from '../../actions/CartActions';
+import Button from '../../components/Button';
+import Counter from '../../components/Counter';
+import './style.css';
 
 class ProductCard extends Component {
 
   calcQuantity(arr, id) {
-    let quantity = 0
+    let quantity = 0;
     arr.forEach(function(element) {
       if (element.id === id) {
         quantity += 1
@@ -53,7 +53,7 @@ class ProductCard extends Component {
                         onChange={this.changeQuantity}
                         value={quantity} />
                 :
-                    <Button onClick={this.addToCart} mod="_add">Добавить в корзину</Button>
+                    <Button onClick={this.addToCart} mod="add">Добавить в корзину</Button>
               }
             </div>
           </div>

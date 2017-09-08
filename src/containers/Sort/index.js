@@ -53,11 +53,11 @@ class Sort extends Component {
                 Сортировка:
                 <div className="btn-group">
                     <Button onClick={() => this.changeSorting('id')} mod={sort.id ? ' active' : ''}>By ID</Button>
-                    <Button onClick={() => this.changeSorting('abc')} mod={sort.abc ? '  active' : ''}>By name</Button>
+                    <Button onClick={() => this.changeSorting('abc')} mod={sort.abc ? ' active' : ''}>By name</Button>
                     <Button onClick={() => this.changeSorting('price')} mod={sort.price ? ' active' : ''}>By price</Button>
                 </div>
 
-                <Button onClick={this.changeDirection} mod={(sort.direction > 0) ? '_dirup' : '_dirdown'} ></Button>
+                <Button onClick={this.changeDirection} mod={(sort.direction > 0) ? 'dirup' : 'dirdown'} ></Button>
             </div>
     )
   }
