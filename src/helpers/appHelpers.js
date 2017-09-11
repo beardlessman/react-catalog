@@ -1,17 +1,20 @@
 export function syncSettingsWithUrl(settings, urlParams) {
-    const page = urlParams.pageNum ? urlParams.pageNum : 1;
-    const sort = urlParams.sortType !== '' ? urlParams.sortType : 'id';
-    const direction = urlParams.direction ? urlParams.direction : 1;
-    const filter = urlParams.filter ? urlParams.filter : '';
+    const page = urlParams.page ? urlParams.page : 1;
+    const sort = urlParams.sort ? urlParams.sort : 'id';
+    const direction = urlParams.dir ? urlParams.dir : 1;
+    const filter = urlParams.q ? urlParams.q : '';
+
 
     if (page) {
         const limit = settings.pagination.limit;
         settings.pagination.offset = (page - 1)  * limit;
-
-        settings.sort[sort] = true;
-        settings.sort.direction = direction;
-        settings.filter.text = filter;
     }
+
+    settings.sort[sort] = true;
+    settings.sort.direction = direction;
+    settings.filter.text = filter;
+
+    console.log(settings);
 
     return settings;
 }
@@ -26,7 +29,7 @@ export function getUrlBySettings(settings) {
         for (let key in settings.sort) {
             if (settings.sort[key] === true) {
                 let sort = key;
-                if ( sort === 'direction' ) {
+                if ( sort === 'dir' ) {
                     sort = 'id';
                 }
                 return sort;
@@ -34,21 +37,21 @@ export function getUrlBySettings(settings) {
         }
     }
 
-    // let url = '/';
-    // if (filterText !== '') {
-    //     url = url + `q=${filterText}`;
-    // }
-    // if (sort !== 'id') {
-    //     url = url + `&sort=${sort}`;
-    // }
-    // if (direction !== 1) {
-    //     url = url + `&direction=${direction}`;
-    // }
-    // if (page !== 1) {
-    //     url = url + `&page=${page}`;
-    // }
-    //
-    // return url;
+    let url = '/';
+    if (filterText !== '') {
+        url = url + `q=${filterText}`;
+    }
+    if (sort !== 'id') {
+        url = url + `&sort=${sort}`;
+    }
+    if (direction !== 1) {
+        url = url + `&dir=${direction}`;
+    }
+    if (page !== 1) {
+        url = url + `&page=${page}`;
+    }
 
-    return `/q=${filterText}&sort=${sort}&direction=${direction}&page=${page}`;
+    return url;
+
+    // return `/q=${filterText}&sort=${sort}&dir=${direction}&page=${page}`;
 }

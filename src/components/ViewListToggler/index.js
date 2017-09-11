@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as appActions from '../../actions/AppActions'
 import './style.css'
-import Button from '../../components/Button'
+import Button from '../Button'
 
 export default class ViewListToggler extends Component {
     toggleView = () => {

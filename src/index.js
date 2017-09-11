@@ -15,8 +15,8 @@ render(
     <Provider store={STORE}>
         <ConnectedRouter history={history}>
             <div>
-                <Route exact path="/" component={App} />
-                <Route path="/q=:filter?&sort=:sortType?&direction=:direction?&page=:pageNum?" component={App} />
+                <Route path="/" component={App} />
+                {/*<Route path="/q=:filter?&sort=:sortType?&direction=:direction?&page=:pageNum?" component={App} />*/}
             </div>
         </ConnectedRouter>
     </Provider>,

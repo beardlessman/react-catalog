@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import './style.css';
-import * as cartActions from '../../actions/CartActions';
 
 class Cart extends Component {
   render() {

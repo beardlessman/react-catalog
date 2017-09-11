@@ -5,17 +5,19 @@ import { connect } from 'react-redux';
 import * as appActions from '../../actions/AppActions';
 import Layout from '../../components/Layout';
 import { syncSettingsWithUrl } from '../../helpers/appHelpers.js';
+import qs from 'querystring';
 
 class App extends Component {
   componentWillMount() {
-    const settings = syncSettingsWithUrl(this.props.settings, this.props.match.params);
-    this.props.appActions.changeSettings(settings);
+      var params = qs.parse(window.location.pathname.slice(1));
+      const settings = syncSettingsWithUrl(this.props.settings, params);
+      this.props.appActions.changeSettings(settings);
   }
   
   render() {
-    return (
-      <Route component={Layout} />
-    )
+      return (
+        <Route component={Layout} />
+      )
   }
 }
 
