@@ -11,7 +11,8 @@ export default class Filter extends Component {
     }
     inputFilterText = (e) => {
       e.preventDefault();
-      const filterText = this.state.value;
+      // const filterText = this.state.value;
+      const filterText = this.refs.textInput.value;
 
       let newSettings = {...this.props.initialSet};
 
@@ -33,8 +34,9 @@ export default class Filter extends Component {
                     <input 
                       id="filterText" 
                       className="input__field"
+                      ref="textInput"
                       type="text" 
-                      placeholder="Search..." 
+                      placeholder="Search..."
                       value={this.state.value}
                       onChange={this.inputHandler}/>
                     <button type="submit" className="input__btn">GO</button>

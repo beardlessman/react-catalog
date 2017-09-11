@@ -6,38 +6,30 @@ import {
 } from '../constants/Cart'
 
 export function addItemToCart (item) {
-    return (dispatch) => {
-        dispatch({
+    return {
             type: ADD_ITEM_TO_CART,
             payload: item
-        })
-    }
+        }
 }
 
 export function removeItemFromCart (item) {
-    return (dispatch) => {
-        dispatch({
+    return {
             type: REMOVE_ITEM_FROM_CART,
             payload: item
-        })
-    }
+        }
 }
 
 export function changeItemQuantity (item, quantity) {
-    return (dispatch) => {
-        dispatch({
+    return {
             type: CHANGE_ITEM_QUANTITY_IN_CART,
             payload: item,
             quantity: quantity
-        })
-    }
+        }
 }
 
 export function clearCart () {
-    return (dispatch) => {
-        dispatch({
+    return {
             type: CLEAR_CART,
             payload: []
-        })
-    }
+        }
 }

@@ -7,52 +7,22 @@ import {
 } from '../constants/App';
 import { push } from 'react-router-redux';
 import { STORE } from '../index.js';
-import axios from 'axios';
 import { getUrlBySettings } from '../helpers/appHelpers.js';
+import { getData } from '../api/appAPI.js';
 
-function load (dispatch, settings) {
-    dispatch({
-        type: LOAD_PRODUCTS_REQUEST,
-        payload: []
-    })
-
-    var root = 'https://jsonplaceholder.typicode.com/posts?userId=1'
-    
-    axios
-        .get(root, {
-            params: settings
-        })
-        .then(function(request) {
-            setTimeout(() => {
-                dispatch({
-                    type: LOAD_PRODUCTS_SUCCESS,
-                    payload: request.data,
-                    meta: request.meta
-                })
-            }, 50)
-        })
-        .catch(function() {
-            setTimeout(() => {
-                dispatch({
-                    type: LOAD_PRODUCTS_ERROR,
-                    payload: []
-                })
-            }, 50)
-        })
-}
 
 export function changeSettings (settings) {
     return (dispatch) => {
 
-        const url = getUrlBySettings(settings)
-        STORE.dispatch(push(url)) 
+        const url = getUrlBySettings(settings);
+        STORE.dispatch(push(url));
 
         dispatch({
             type: CHANGE_SETTINGS,
             payload: settings
-        })
+        });
 
-        load(dispatch, settings)
+        getData(loadRequest, successRequest, errorRequest);
     }
 }
 
@@ -63,4 +33,25 @@ export function changeViewList (view) {
             payload: view
         });
     }
+}
+
+function loadRequest (dispatch) {
+    STORE.dispatch({
+        type: LOAD_PRODUCTS_REQUEST,
+        payload: []
+    });
+}
+function successRequest(request, dispatch) {
+    STORE.dispatch({
+        type: LOAD_PRODUCTS_SUCCESS,
+        payload: request.data,
+        meta: request.meta
+    });
+}
+function errorRequest(dispatch, request) {
+    STORE.dispatch({
+        type: LOAD_PRODUCTS_SUCCESS,
+        payload: request.data,
+        meta: request.meta
+    });
 }

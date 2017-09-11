@@ -21,17 +21,12 @@ export default class Pagination extends Component {
         const prevSettings = this.props.fullSettings;
         let offset = this.state.limit * e.target.getAttribute('data-target') - this.state.limit;
 
-        // без этого не работает ПАЧИМУ??
-        this.setState({
-           offset: offset
-        });
-
         let newSettings = {...prevSettings, pagination: {limit: this.state.limit, offset: offset}};
         this.props.onChangeSettings(newSettings);
     };
     makeBtnsArray() {
         let pages = this.state.total / this.state.limit;
-        let currentPage = ( this.state.offset / this.state.limit ) + 1;
+        let currentPage = ( this.props.offset / this.state.limit ) + 1;
             
         let buttons = makeBtnsDataH(pages, currentPage);
         return buttons.map((item, id) => {

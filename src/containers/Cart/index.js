@@ -35,10 +35,5 @@ function mapStateToProps (state) {
     cart: state.cart
   }
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    cartActions: bindActionCreators(cartActions, dispatch)
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps)(Cart);
