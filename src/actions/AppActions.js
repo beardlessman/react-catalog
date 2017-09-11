@@ -50,8 +50,6 @@ function successRequest(request, dispatch) {
 }
 function errorRequest(dispatch, request) {
     STORE.dispatch({
-        type: LOAD_PRODUCTS_SUCCESS,
-        payload: request.data,
-        meta: request.meta
+        type: LOAD_PRODUCTS_ERROR
     });
 }
