@@ -22,7 +22,12 @@ export function changeSettings (settings) {
             payload: settings
         });
 
-        getData(loadRequest, successRequest, errorRequest);
+        loadRequest(dispatch);
+        getData()
+            .then(
+                result => successRequest(result, dispatch),
+                error => errorRequest()
+            );
     }
 }
 
@@ -48,7 +53,7 @@ function successRequest(request, dispatch) {
         meta: request.meta
     });
 }
-function errorRequest(dispatch, request) {
+function errorRequest(dispatch) {
     STORE.dispatch({
         type: LOAD_PRODUCTS_ERROR
     });
