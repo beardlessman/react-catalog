@@ -4,17 +4,14 @@ export function syncSettingsWithUrl(settings, urlParams) {
     const direction = urlParams.dir ? urlParams.dir : 1;
     const filter = urlParams.q ? urlParams.q : '';
 
-
     if (page) {
         const limit = settings.pagination.limit;
         settings.pagination.offset = (page - 1)  * limit;
     }
 
-    settings.sort[sort] = true;
-    settings.sort.direction = direction;
+    settings.sort = sort;
+    settings.direction = direction;
     settings.filter.text = filter;
-
-    console.log(settings);
 
     return settings;
 }
@@ -22,20 +19,8 @@ export function syncSettingsWithUrl(settings, urlParams) {
 export function getUrlBySettings(settings) {
     let filterText = settings.filter.text;
     let page = ( settings.pagination.offset / settings.pagination.limit ) + 1;
-    let sort = sortType();
-    let direction = settings.sort.direction;
-
-    function sortType () {
-        for (let key in settings.sort) {
-            if (settings.sort[key] === true) {
-                let sort = key;
-                if ( sort === 'dir' ) {
-                    sort = 'id';
-                }
-                return sort;
-            }
-        }
-    }
+    let sort = settings.sort;
+    let direction = settings.direction;
 
     let url = '/';
     if (filterText !== '') {
@@ -52,6 +37,4 @@ export function getUrlBySettings(settings) {
     }
 
     return url;
-
-    // return `/q=${filterText}&sort=${sort}&dir=${direction}&page=${page}`;
 }

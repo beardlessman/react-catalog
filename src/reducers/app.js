@@ -11,12 +11,8 @@ export const initialState = {
     fetching: true,
     error: false,
     settings: {
-        sort: {
-            id: false,
-            abc: false,
-            price: false,
-            direction: 1
-        },
+        sort: 'id',
+        direction: 1,
         filter: {
             text: ''
         }, 
