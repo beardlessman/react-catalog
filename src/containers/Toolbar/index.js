@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Sort from '../../containers/Sort'
 import Pagination from '../../components/Pagination'
-import ViewListToggler from '../../containers/ViewListToggler'
+import ViewListToggler from '../../components/ViewListToggler'
 import './style.css'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ class Toolbar extends Component {
             />
           </div>
           <div className="toolbar__pagination">
-              <ViewListToggler />
+              <ViewListToggler view={this.props.view} action={this.props.appActions.changeViewList} />
           </div>
       </div>
     )
@@ -34,6 +34,7 @@ class Toolbar extends Component {
 
 function mapStateToProps (state) {
     return {
+        view: state.app.viewList,
         settings: state.app.settings,
         meta: state.app.meta
     }

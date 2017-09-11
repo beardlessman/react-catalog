@@ -5,7 +5,7 @@ import * as appActions from '../../actions/AppActions'
 import './style.css'
 import Button from '../../components/Button'
 
-class ViewListToggler extends Component {
+export default class ViewListToggler extends Component {
     toggleView = () => {
         let view = this.props.view;
         if (view === 'grid') {
@@ -14,7 +14,7 @@ class ViewListToggler extends Component {
             view = 'grid';
         }
 
-        this.props.actions.changeViewList(view);
+        this.props.action(view);
     };
     render() {
         const view = this.props.view;
@@ -29,16 +29,3 @@ class ViewListToggler extends Component {
         )
     };
 }
-
-function mapStateToProps (state) {
-    return {
-        view: state.app.viewList
-    }
-}
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(appActions, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ViewListToggler)
