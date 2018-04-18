@@ -15,7 +15,7 @@ export default class Layout extends Component {
           <Header/>
         </div>
         <div className="layout__content">
-          <Route component={Content} className="layout__content"/>
+          <Route component={Content}/>
         </div>
         <div className="layout__footer">
           <Footer />
